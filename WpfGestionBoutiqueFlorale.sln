@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfGestionBoutiqueFlorale", "WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale.csproj", "{93DA640A-D562-470E-94B3-315F378DD40D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{93DA640A-D562-470E-94B3-315F378DD40D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93DA640A-D562-470E-94B3-315F378DD40D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93DA640A-D562-470E-94B3-315F378DD40D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93DA640A-D562-470E-94B3-315F378DD40D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E52D5B72-FA7D-43BC-BC5C-6662F2BB5968}
+	EndGlobalSection
+EndGlobal

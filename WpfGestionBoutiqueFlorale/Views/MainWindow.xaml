@@ -1,0 +1,75 @@
+﻿<Window x:Class="WpfGestionBoutiqueFlorale.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfGestionBoutiqueFlorale.Views"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="Boutique Florale"
+        Height="700"
+        Width="1000"
+        WindowStartupLocation="CenterScreen">
+
+    <DockPanel>
+        <!-- Menu en haut -->
+        <Menu DockPanel.Dock="Top">
+            <!-- Utilisateurs -->
+            <MenuItem Header="Utilisateurs" FontSize="17">
+                <MenuItem Header="Ajouter un client" Click="AjouterClientMenu_Click"/>
+                <MenuItem Header="Ajouter un vendeur"/>
+                <MenuItem Header="Ajouter un fournisseur"/>
+                <MenuItem.Icon>
+                    <iconPacks:PackIconMaterial Kind="Account" Width="16" Height="16"/>
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <!-- Fleurs -->
+            <MenuItem Header="Fleurs" FontSize="17">
+                <MenuItem Header="Réapprovisionnement"/>
+                <MenuItem Header="Afficher les fleurs"/>
+                <MenuItem.Icon>
+                    <iconPacks:PackIconMaterial Kind="Flower" Width="16" Height="16"/>
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <!-- Bouquets -->
+            <MenuItem Header="Bouquets" FontSize="17">
+                <MenuItem Header="Créer un bouquet personnalisé"/>
+                <MenuItem Header="Afficher les bouquets créés"/>
+                <MenuItem.Icon>
+                    <iconPacks:PackIconMaterial Kind="FlowerTulip" Width="16" Height="16"/>
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <!-- Commandes -->
+            <MenuItem Header="Commande" FontSize="17">
+                <MenuItem Header="Passer une commande"/>
+                <MenuItem Header="Valider une commande"/>
+                <MenuItem Header="Annuler une commande"/>
+                <MenuItem.Icon>
+                    <iconPacks:PackIconMaterial Kind="Cart" Width="16" Height="16"/>
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <!-- Factures -->
+            <MenuItem Header="Facture" FontSize="17">
+                <MenuItem Header="Générer une facture"/>
+                <MenuItem Header="Afficher les factures"/>
+                <MenuItem.Icon>
+                    <iconPacks:PackIconMaterial Kind="Receipt" Width="16" Height="16"/>
+                </MenuItem.Icon>
+            </MenuItem>
+        </Menu>
+
+        <!-- Contenu central avec les onglets -->
+        <TabControl x:Name="MainTabControl">
+            <!--<TabItem Header="Accueil">
+                <TextBlock Text="Bienvenue dans l'application de gestion florale !"
+                           FontSize="24"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"/>
+            </TabItem>-->
+        </TabControl>
+    </DockPanel>
+</Window>
