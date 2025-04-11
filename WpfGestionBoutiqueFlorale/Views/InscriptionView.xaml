@@ -50,6 +50,16 @@
                              Height="35"/>
                     </StackPanel>
 
+                    <!-- Role -->
+                    <StackPanel>
+                        <Label Content="Role*" 
+                            FontWeight="SemiBold"
+                            Padding="0,0,0,2"/>
+                        <TextBox Text="{Binding Adresse, UpdateSourceTrigger=PropertyChanged}"
+                            Padding="8"
+                            Height="35"/>
+                    </StackPanel>
+
                     <!-- Téléphone -->
                     <StackPanel>
                         <Label Content="Téléphone*" 

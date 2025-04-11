@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\LENOVO\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\obj\Debug\net8.0-windows\
+C:\Users\victorien\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\obj\Debug\net8.0-windows\
 WpfGestionBoutiqueFlorale
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\LENOVO\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\App.xaml
+C:\Users\victorien\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\App.xaml
 121514033308
 
 381852443011
-270-412283058
+270480106792
 Views\BouquetView.xaml;Views\ClientView.xaml;Views\CommandeView.xaml;Views\ConnexionView.xaml;Views\FactureView.xaml;Views\FleurView.xaml;Views\FournisseurView.xaml;Views\InscriptionView.xaml;Views\MainWindow.xaml;Views\ProprietaireView.xaml;Views\UtilisateurView.xaml;Views\VendeurView.xaml;
 
 False

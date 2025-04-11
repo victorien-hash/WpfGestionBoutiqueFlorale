@@ -20,8 +20,5 @@ public partial class MainWindow : Window
 		this.DataContext = new MainViewModel();
 	}
 
-	private void Button_Click(object sender, RoutedEventArgs e)
-	{
-
-	}
+	
 }

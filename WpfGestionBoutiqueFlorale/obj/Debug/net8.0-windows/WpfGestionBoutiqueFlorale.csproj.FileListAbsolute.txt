@@ -417,3 +417,8 @@ C:\Users\LENOVO\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\obj\
 C:\Users\LENOVO\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\obj\Debug\net8.0-windows\Views\InscriptionView.g.cs
 C:\Users\LENOVO\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\obj\Debug\net8.0-windows\Views\ConnexionView.baml
 C:\Users\LENOVO\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\obj\Debug\net8.0-windows\Views\InscriptionView.baml
+C:\Users\victorien\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\obj\Debug\net8.0-windows\Views\ConnexionView.g.cs
+C:\Users\victorien\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\obj\Debug\net8.0-windows\Views\InscriptionView.g.cs
+C:\Users\victorien\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\obj\Debug\net8.0-windows\Views\ConnexionView.baml
+C:\Users\victorien\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\obj\Debug\net8.0-windows\Views\InscriptionView.baml
+C:\Users\victorien\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\obj\Debug\net8.0-windows\WpfGestionBoutiqueFlorale.sourcelink.json
