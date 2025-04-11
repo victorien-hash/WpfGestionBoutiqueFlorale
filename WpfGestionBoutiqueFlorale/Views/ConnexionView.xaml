@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:WpfGestionBoutiqueFlorale.Views"
         mc:Ignorable="d"
         Title="ConnexionView" Height="450" Width="800">
-    <Grid>
-        
+
+    <Grid Margin="20">
+      
     </Grid>
 </Window>

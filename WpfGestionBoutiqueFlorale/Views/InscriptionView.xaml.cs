@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfGestionBoutiqueFlorale.ViewModels;
 
 namespace WpfGestionBoutiqueFlorale.Views
 {
@@ -19,9 +20,23 @@ namespace WpfGestionBoutiqueFlorale.Views
 	/// </summary>
 	public partial class InscriptionView : Window
 	{
+		
 		public InscriptionView()
 		{
 			InitializeComponent();
+			DataContext = new InscriptionViewModel();
+		}
+
+		private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+		{
+			if (DataContext is InscriptionViewModel vm)
+				vm.MotDePasse = MotPasswordBox.Password;
+		}
+
+		private void ConfirmPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+		{
+			if (DataContext is InscriptionViewModel vm)
+				vm.ConfirmationMotDePasse = ConfirmationPasswordBox.Password;
 		}
 	}
 }

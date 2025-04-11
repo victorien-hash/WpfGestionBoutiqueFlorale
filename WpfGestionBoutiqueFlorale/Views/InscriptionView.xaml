@@ -6,7 +6,108 @@
         xmlns:local="clr-namespace:WpfGestionBoutiqueFlorale.Views"
         mc:Ignorable="d"
         Title="InscriptionView" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="20">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Width="350" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <!-- Titre -->
+                <TextBlock Text="Inscription" 
+                       FontSize="24" 
+                       FontWeight="Bold" 
+                       Margin="0,0,0,25"
+                       HorizontalAlignment="Center"
+                       Foreground="#FF2E8B57"/>
+
+                <!-- Formulaire -->
+                <StackPanel>
+                    <!-- Nom -->
+                    <StackPanel>
+                        <Label Content="Nom*" 
+                           FontWeight="SemiBold"
+                           Padding="0,0,0,2"/>
+                        <TextBox Text="{Binding Nom, UpdateSourceTrigger=PropertyChanged}"
+                             Padding="8"
+                             Height="35"
+                             />
+                    </StackPanel>
+
+                    <!-- Prénom -->
+                    <StackPanel>
+                        <Label Content="Prénom*" 
+                           FontWeight="SemiBold"
+                           Padding="0,0,0,2"/>
+                        <TextBox Text="{Binding Prenom, UpdateSourceTrigger=PropertyChanged}"
+                             Padding="8"
+                             Height="35"/>
+                    </StackPanel>
+
+                    <!-- Adresse -->
+                    <StackPanel>
+                        <Label Content="Adresse*" 
+                           FontWeight="SemiBold"
+                           Padding="0,0,0,2"/>
+                        <TextBox Text="{Binding Adresse, UpdateSourceTrigger=PropertyChanged}"
+                             Padding="8"
+                             Height="35"/>
+                    </StackPanel>
+
+                    <!-- Téléphone -->
+                    <StackPanel>
+                        <Label Content="Téléphone*" 
+                           FontWeight="SemiBold"
+                           Padding="0,0,0,2"/>
+                        <TextBox Text="{Binding Telephone, UpdateSourceTrigger=PropertyChanged}"
+                             Padding="8"
+                             Height="35"
+                             InputScope="TelephoneNumber"/>
+                    </StackPanel>
+
+                    <!-- Mot de passe -->
+                    <StackPanel>
+                        <Label Content="Mot de passe*" 
+                           FontWeight="SemiBold"
+                           Padding="0,0,0,2"/>
+                        <PasswordBox x:Name="MotPasswordBox" PasswordChanged="PasswordBox_PasswordChanged"
+                                Padding="8"
+                                Height="35"/>
+                    </StackPanel>
+
+                    <!-- Confirmation mot de passe -->
+                    <StackPanel Margin="0,0,0,20">
+                        <Label Content="Confirmation mot de passe*"
+                           FontWeight="SemiBold"
+                           Padding="0,0,0,2"/>
+                        <PasswordBox x:Name="ConfirmationPasswordBox" PasswordChanged="ConfirmPasswordBox_PasswordChanged"
+                                Padding="8"
+                                Height="35"/>
+                    </StackPanel>
+
+                    <!-- Bouton Valider -->
+                    <Button Content="S'inscrire" 
+                        Command="{Binding RegisterCommand}"
+                        Margin="0,10" 
+                        Padding="15,8"
+                        HorizontalAlignment="Stretch"
+                        FontSize="16"
+                        Background="#FF2E8B57"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Cursor="Hand">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+
+                <!-- Lien vers connexion -->
+                <TextBlock Margin="0,15,0,0" HorizontalAlignment="Center">
+                <Hyperlink Command="{Binding NavigateToLoginCommand}" 
+                          Foreground="#FF2E8B57">
+                    Déjà un compte ? Se connecter
+                </Hyperlink>
+                </TextBlock>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

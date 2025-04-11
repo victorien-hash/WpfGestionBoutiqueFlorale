@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfGestionBoutiqueFlorale.ViewModels;
 
 namespace WpfGestionBoutiqueFlorale.Views;
 
@@ -16,30 +17,11 @@ public partial class MainWindow : Window
     public MainWindow()
     {
 		InitializeComponent();
-    }
-    /*private void AjouterClientMenu_Click(object sender, RoutedEventArgs e)
-    {
-        // Vérifie si l'onglet existe déjà
-        foreach (TabItem tab in MainTabControl.Items)
-        {
-            if (tab.Header.ToString() == "Ajouter un client")
-            {
-                MainTabControl.SelectedItem = tab;
-                return;
-            }
-        }
+		this.DataContext = new MainViewModel();
+	}
 
-        // Crée le contrôle client
-        ClientView clientView = new ClientView();
+	private void Button_Click(object sender, RoutedEventArgs e)
+	{
 
-        // Crée un nouvel onglet
-        TabItem tabItem = new TabItem
-        {
-            Header = "Ajouter un client",
-            Content = clientView
-        };
-
-        MainTabControl.Items.Add(tabItem);
-        MainTabControl.SelectedItem = tabItem;
-    }*/
+	}
 }
