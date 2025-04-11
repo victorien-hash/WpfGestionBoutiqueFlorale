@@ -15,9 +15,9 @@ public partial class MainWindow : Window
 {
     public MainWindow()
     {
-        InitializeComponent();
+		InitializeComponent();
     }
-    private void AjouterClientMenu_Click(object sender, RoutedEventArgs e)
+    /*private void AjouterClientMenu_Click(object sender, RoutedEventArgs e)
     {
         // Vérifie si l'onglet existe déjà
         foreach (TabItem tab in MainTabControl.Items)
@@ -41,5 +41,5 @@ public partial class MainWindow : Window
 
         MainTabControl.Items.Add(tabItem);
         MainTabControl.SelectedItem = tabItem;
-    }
+    }*/
 }

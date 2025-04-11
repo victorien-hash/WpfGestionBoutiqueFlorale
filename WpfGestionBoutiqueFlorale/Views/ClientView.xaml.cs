@@ -24,15 +24,18 @@ namespace WpfGestionBoutiqueFlorale.Views
         private void AjouterClient_Click(object sender, RoutedEventArgs e)
         {
             string nom = NomClientTextBox.Text;
-            string email = EmailClientTextBox.Text;
+            string prenom =PrenomClientTextBox.Text;
+            Int64 telephone = 0;
+            string adresse =AdresseClientTextBox.Text;
 
-            if (string.IsNullOrWhiteSpace(nom) || string.IsNullOrWhiteSpace(email))
+
+            if (string.IsNullOrWhiteSpace(nom) || string.IsNullOrWhiteSpace(prenom) || string.IsNullOrWhiteSpace(prenom))
             {
                 MessageBox.Show("Veuillez remplir tous les champs.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
-                MessageBox.Show($"Client ajouté : {nom} ({email})", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show($"Client ajouté : {nom} {prenom}", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
     }

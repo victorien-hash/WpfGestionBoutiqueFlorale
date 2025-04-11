@@ -11,6 +11,9 @@
     <Compile Update="Views\CommandeView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\ConnexionView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\FactureView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -18,6 +21,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\FournisseurView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\InscriptionView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\ProprietaireView.xaml.cs">
