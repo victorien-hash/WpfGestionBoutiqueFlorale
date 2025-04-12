@@ -7,6 +7,28 @@
         mc:Ignorable="d"
         Title="FournisseurView" Height="450" Width="800">
     <Grid>
-        
+        <TabControl Margin="10" Background="#FFF5F5F5">
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabItem}">
+                    <Setter Property="Padding" Value="15 8"/>
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="Background" Value="#FFEEEEEE"/>
+                    <Setter Property="BorderBrush" Value="#FFDDDDDD"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="BorderThickness" Value="1 1 1 0"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabControl.Resources>
+
+            <TabItem Header="Reapprovisionnement">
+                <!-- Contenu vide pour l'instant -->
+                <Grid/>
+            </TabItem>
+        </TabControl>
+
     </Grid>
 </Window>

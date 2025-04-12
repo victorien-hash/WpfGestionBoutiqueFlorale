@@ -23,5 +23,11 @@ namespace WpfGestionBoutiqueFlorale.Views
         {
             InitializeComponent();
         }
+
+        private void AjouterClientMenu_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
     }
 }
+

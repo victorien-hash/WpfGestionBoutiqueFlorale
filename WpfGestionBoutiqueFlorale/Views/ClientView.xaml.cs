@@ -11,33 +11,21 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfGestionBoutiqueFlorale.ViewModels;
 
 namespace WpfGestionBoutiqueFlorale.Views
 {
-    public partial class ClientView : UserControl
+    public partial class ClientView : Window
     {
         public ClientView()
         {
             InitializeComponent();
+            
         }
 
-        private void AjouterClient_Click(object sender, RoutedEventArgs e)
-        {
-            string nom = NomClientTextBox.Text;
-            string prenom =PrenomClientTextBox.Text;
-            Int64 telephone = 0;
-            string adresse =AdresseClientTextBox.Text;
 
 
-            if (string.IsNullOrWhiteSpace(nom) || string.IsNullOrWhiteSpace(prenom) || string.IsNullOrWhiteSpace(prenom))
-            {
-                MessageBox.Show("Veuillez remplir tous les champs.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            else
-            {
-                MessageBox.Show($"Client ajouté : {nom} {prenom}", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-        }
+       
     }
 
 }

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfGestionBoutiqueFlorale.ViewModels;
 
 namespace WpfGestionBoutiqueFlorale.Views
 {
@@ -22,6 +23,13 @@ namespace WpfGestionBoutiqueFlorale.Views
 		public ConnexionView()
 		{
 			InitializeComponent();
+			DataContext = new ConnexionViewModel();
 		}
-	}
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is ConnexionViewModel vm)
+                vm.Password = Password.Password;
+        }
+    }
 }

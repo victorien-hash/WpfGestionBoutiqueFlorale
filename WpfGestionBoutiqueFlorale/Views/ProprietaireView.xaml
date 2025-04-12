@@ -4,9 +4,97 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfGestionBoutiqueFlorale.Views"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Title="ProprietaireView" Height="450" Width="800">
-    <Grid>
+
+    <DockPanel>
         
-    </Grid>
+
+        <!-- Contenu central avec les onglets -->
+        <TabControl>
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabItem}">
+                    <Setter Property="Padding" Value="15 10"/>
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="Background" Value="#FFEEEEEE"/>
+                    <Setter Property="BorderBrush" Value="#FFDDDDDD"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="BorderThickness" Value="1 1 1 0"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabControl.Resources>
+
+            <!-- Onglet Utilisateurs -->
+            <TabItem Header="Utilisateurs">
+                <TabControl>
+                    <TabItem Header="Ajouter un client">
+                        <!-- Contenu à ajouter -->
+                        <Grid/>
+                    </TabItem>
+                    <TabItem Header="Ajouter un vendeur">
+                        <Grid/>
+                    </TabItem>
+                    <TabItem Header="Ajouter un fournisseur">
+                        <Grid/>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+
+            <!-- Onglet Fleurs -->
+            <TabItem Header="Fleurs">
+                <TabControl>
+                    <TabItem Header="Réapprovisionnement">
+                        <Grid/>
+                    </TabItem>
+                    <TabItem Header="Afficher les fleurs">
+                        <Grid/>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+
+            <!-- Onglet Bouquets -->
+            <TabItem Header="Bouquets">
+                <TabControl>
+                    <TabItem Header="Créer un bouquet personnalisé">
+                        <Grid/>
+                    </TabItem>
+                    <TabItem Header="Afficher les bouquets créés">
+                        <Grid/>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+
+            <!-- Onglet Commandes -->
+            <TabItem Header="Commandes">
+                <TabControl>
+                    <TabItem Header="Passer une commande">
+                        <Grid/>
+                    </TabItem>
+                    <TabItem Header="Valider une commande">
+                        <Grid/>
+                    </TabItem>
+                    <TabItem Header="Annuler une commande">
+                        <Grid/>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+
+            <!-- Onglet Factures -->
+            <TabItem Header="Factures">
+                <TabControl>
+                    <TabItem Header="Générer une facture">
+                        <Grid/>
+                    </TabItem>
+                    <TabItem Header="Afficher les factures">
+                        <Grid/>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
 </Window>
