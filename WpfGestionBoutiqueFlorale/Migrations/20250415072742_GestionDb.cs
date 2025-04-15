@@ -1,0 +1,171 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace WpfGestionBoutiqueFlorale.Migrations
+{
+    /// <inheritdoc />
+    public partial class GestionDb : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "Factures",
+                columns: table => new
+                {
+                    IdFacture = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ModePaiement = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Factures", x => x.IdFacture);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Utilisateurs",
+                columns: table => new
+                {
+                    IdUtilisateur = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    username = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    firstname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    lastname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    role = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Utilisateurs", x => x.IdUtilisateur);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Commandes",
+                columns: table => new
+                {
+                    IdCommande = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdUtilisateur = table.Column<int>(type: "int", nullable: false),
+                    UtilisateurIdUtilisateur = table.Column<int>(type: "int", nullable: false),
+                    MontantTotal = table.Column<double>(type: "float", nullable: false),
+                    EstValidee = table.Column<bool>(type: "bit", nullable: false),
+                    IdFacture = table.Column<int>(type: "int", nullable: false),
+                    FactureIdFacture = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Commandes", x => x.IdCommande);
+                    table.ForeignKey(
+                        name: "FK_Commandes_Factures_FactureIdFacture",
+                        column: x => x.FactureIdFacture,
+                        principalTable: "Factures",
+                        principalColumn: "IdFacture",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Commandes_Utilisateurs_UtilisateurIdUtilisateur",
+                        column: x => x.UtilisateurIdUtilisateur,
+                        principalTable: "Utilisateurs",
+                        principalColumn: "IdUtilisateur",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Bouquets",
+                columns: table => new
+                {
+                    IdBouquet = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NomBouquet = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CartePersonnalise = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IdCommande = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bouquets", x => x.IdBouquet);
+                    table.ForeignKey(
+                        name: "FK_Bouquets_Commandes_IdCommande",
+                        column: x => x.IdCommande,
+                        principalTable: "Commandes",
+                        principalColumn: "IdCommande",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Fleurs",
+                columns: table => new
+                {
+                    IdFleur = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nom = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PrixUnitaire = table.Column<double>(type: "float", nullable: false),
+                    CouleurDominante = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IdBouquet = table.Column<int>(type: "int", nullable: false),
+                    BouquetIdBouquet = table.Column<int>(type: "int", nullable: false),
+                    IdCommande = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Fleurs", x => x.IdFleur);
+                    table.ForeignKey(
+                        name: "FK_Fleurs_Bouquets_BouquetIdBouquet",
+                        column: x => x.BouquetIdBouquet,
+                        principalTable: "Bouquets",
+                        principalColumn: "IdBouquet",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Fleurs_Commandes_IdCommande",
+                        column: x => x.IdCommande,
+                        principalTable: "Commandes",
+                        principalColumn: "IdCommande");
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bouquets_IdCommande",
+                table: "Bouquets",
+                column: "IdCommande");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Commandes_FactureIdFacture",
+                table: "Commandes",
+                column: "FactureIdFacture");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Commandes_UtilisateurIdUtilisateur",
+                table: "Commandes",
+                column: "UtilisateurIdUtilisateur");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Fleurs_BouquetIdBouquet",
+                table: "Fleurs",
+                column: "BouquetIdBouquet");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Fleurs_IdCommande",
+                table: "Fleurs",
+                column: "IdCommande");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "Fleurs");
+
+            migrationBuilder.DropTable(
+                name: "Bouquets");
+
+            migrationBuilder.DropTable(
+                name: "Commandes");
+
+            migrationBuilder.DropTable(
+                name: "Factures");
+
+            migrationBuilder.DropTable(
+                name: "Utilisateurs");
+        }
+    }
+}

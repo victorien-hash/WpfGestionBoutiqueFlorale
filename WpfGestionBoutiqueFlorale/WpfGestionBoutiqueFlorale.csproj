@@ -24,4 +24,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="BouquetLibrary">
+      <HintPath>bin\Debug\net8.0-windows\BouquetLibrary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

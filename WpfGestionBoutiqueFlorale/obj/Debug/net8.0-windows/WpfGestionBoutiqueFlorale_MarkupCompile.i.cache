@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR
 C:\Users\victorien\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\App.xaml
 121514033308
 
-40-1391747699
-270480106792
+40-820053374
+271-987533282
 Views\BouquetView.xaml;Views\ClientView.xaml;Views\CommandeView.xaml;Views\ConnexionView.xaml;Views\FactureView.xaml;Views\FleurView.xaml;Views\FournisseurView.xaml;Views\InscriptionView.xaml;Views\MainWindow.xaml;Views\ProprietaireView.xaml;Views\UtilisateurView.xaml;Views\VendeurView.xaml;
 
-True
+False
 
