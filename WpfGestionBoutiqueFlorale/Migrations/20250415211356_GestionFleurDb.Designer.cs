@@ -11,8 +11,8 @@ using WpfGestionBoutiqueFlorale;
 namespace WpfGestionBoutiqueFlorale.Migrations
 {
     [DbContext(typeof(GestionFloraleDbContext))]
-    [Migration("20250415072742_GestionDb")]
-    partial class GestionDb
+    [Migration("20250415211356_GestionFleurDb")]
+    partial class GestionFleurDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -110,7 +110,7 @@ namespace WpfGestionBoutiqueFlorale.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdFleur"));
 
-                    b.Property<int>("BouquetIdBouquet")
+                    b.Property<int?>("BouquetIdBouquet")
                         .HasColumnType("int");
 
                     b.Property<string>("CouleurDominante")
@@ -121,10 +121,10 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IdBouquet")
+                    b.Property<int?>("IdBouquet")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdCommande")
+                    b.Property<int?>("IdCommande")
                         .HasColumnType("int");
 
                     b.Property<string>("Nom")
@@ -218,15 +218,12 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                 {
                     b.HasOne("WpfGestionBoutiqueFlorale.Models.Bouquet", "Bouquet")
                         .WithMany("Fleurs")
-                        .HasForeignKey("BouquetIdBouquet")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BouquetIdBouquet");
 
                     b.HasOne("WpfGestionBoutiqueFlorale.Models.Commande", "Commande")
                         .WithMany("Fleurs")
                         .HasForeignKey("IdCommande")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Bouquet");
 

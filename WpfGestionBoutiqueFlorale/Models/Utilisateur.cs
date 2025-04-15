@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WpfGestionBoutiqueFlorale.Models
 {
-    class Utilisateur
+     public class Utilisateur
     {
         [Key]
         public int IdUtilisateur { get; set; }

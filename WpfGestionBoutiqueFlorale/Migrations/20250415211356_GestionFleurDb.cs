@@ -5,7 +5,7 @@
 namespace WpfGestionBoutiqueFlorale.Migrations
 {
     /// <inheritdoc />
-    public partial class GestionDb : Migration
+    public partial class GestionFleurDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -103,9 +103,9 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                     PrixUnitaire = table.Column<double>(type: "float", nullable: false),
                     CouleurDominante = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IdBouquet = table.Column<int>(type: "int", nullable: false),
-                    BouquetIdBouquet = table.Column<int>(type: "int", nullable: false),
-                    IdCommande = table.Column<int>(type: "int", nullable: false)
+                    IdBouquet = table.Column<int>(type: "int", nullable: true),
+                    BouquetIdBouquet = table.Column<int>(type: "int", nullable: true),
+                    IdCommande = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -114,8 +114,7 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                         name: "FK_Fleurs_Bouquets_BouquetIdBouquet",
                         column: x => x.BouquetIdBouquet,
                         principalTable: "Bouquets",
-                        principalColumn: "IdBouquet",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "IdBouquet");
                     table.ForeignKey(
                         name: "FK_Fleurs_Commandes_IdCommande",
                         column: x => x.IdCommande,

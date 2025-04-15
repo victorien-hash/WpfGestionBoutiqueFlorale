@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WpfGestionBoutiqueFlorale.Models
 {
-    class Commande
+    public class Commande
     {
         public Commande()
         {

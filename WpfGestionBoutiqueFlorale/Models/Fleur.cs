@@ -8,7 +8,7 @@ using CsvHelper.Configuration.Attributes;
 
 namespace WpfGestionBoutiqueFlorale.Models
 {
-    class Fleur
+    public class Fleur
     {
         [Key]
         public int IdFleur { get; set; }
@@ -25,11 +25,11 @@ namespace WpfGestionBoutiqueFlorale.Models
         [Name("Caractéristiques")]
         public string Description { get; set; }
 
-        public int IdBouquet { get; set; }
-        public Bouquet Bouquet { get; set; }
+        public int? IdBouquet { get; set; }
+        public Bouquet? Bouquet { get; set; }
 
-        public int IdCommande { get; set; }
-        public Commande Commande { get; set; }
+        public int? IdCommande { get; set; }
+        public Commande? Commande { get; set; }
 
 
     }

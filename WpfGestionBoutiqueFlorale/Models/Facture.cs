@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WpfGestionBoutiqueFlorale.Models
 {
-    class Facture
+    public class Facture
     {
         [Key]
         public int IdFacture { get; set; }

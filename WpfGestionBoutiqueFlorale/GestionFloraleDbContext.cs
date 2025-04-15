@@ -24,6 +24,8 @@ namespace WpfGestionBoutiqueFlorale
             dbContextOptionsBuilder.UseSqlServer($"{connection_string};Database={database_name};");
         }
 
+       
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Fleur>()

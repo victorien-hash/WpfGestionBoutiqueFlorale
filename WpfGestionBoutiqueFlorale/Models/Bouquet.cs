@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WpfGestionBoutiqueFlorale.Models
 {
-    class Bouquet
+    public class Bouquet
     {
         public Bouquet() { 
             Fleurs = new List<Fleur>();
