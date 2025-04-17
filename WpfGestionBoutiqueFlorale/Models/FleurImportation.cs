@@ -42,10 +42,14 @@ namespace WpfGestionBoutiqueFlorale.Models
                 }
 
                 using var db = new GestionFloraleDbContext();
-                db.Fleurs.AddRange(fleurs);
-                db.SaveChanges();
+           
+                if (!db.Fleurs.Any())
+                {
+                    db.Fleurs.AddRange(fleurs);
+                    db.SaveChanges();
 
-                MessageBox.Show($"{fleurs.Count} fleurs importées avec succès.");
+                    MessageBox.Show($"{fleurs.Count} fleurs importées avec succès.");
+                }
             }
             catch (Exception ex)
             {
