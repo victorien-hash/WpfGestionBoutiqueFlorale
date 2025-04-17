@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using CsvHelper;
+using CsvHelper.Configuration;
 using CsvHelper.Configuration.Attributes;
 using Microsoft.EntityFrameworkCore;
 using WpfGestionBoutiqueFlorale;
@@ -22,12 +23,16 @@ namespace WpfGestionBoutiqueFlorale.Models
                 using var reader = new StreamReader(cheminFichierCsv);
                 using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
 
-                // Ignore les propriétés non présentes dans le CSV (comme IdFleur, IdBouquet, IdCommande)
-                csv.Context.TypeConverterOptionsCache.GetOptions<double>().NumberStyles = NumberStyles.Any;
+                // Ignore les colonnes non présentes dans le CSV
+                csv.Context.Configuration.HeaderValidated = null;
+                csv.Context.Configuration.MissingFieldFound = null;
+
+
+                csv.Context.RegisterClassMap<FleurMap>();
 
                 var fleurs = csv.GetRecords<Fleur>().ToList();
 
-                // On force les clés étrangères à null pour éviter tout lien non voulu
+                // On force les clés étrangères à null
                 foreach (var fleur in fleurs)
                 {
                     fleur.IdBouquet = null;
@@ -37,10 +42,8 @@ namespace WpfGestionBoutiqueFlorale.Models
                 }
 
                 using var db = new GestionFloraleDbContext();
-
                 db.Fleurs.AddRange(fleurs);
                 db.SaveChanges();
-
 
                 MessageBox.Show($"{fleurs.Count} fleurs importées avec succès.");
             }
@@ -50,7 +53,17 @@ namespace WpfGestionBoutiqueFlorale.Models
             }
         }
 
-       
-}
 
     }
+    public sealed class FleurMap : ClassMap<Fleur>
+    {
+        public FleurMap()
+        {
+            Map(f => f.Nom).Name("Nom");
+            Map(f => f.PrixUnitaire).Name("Prix Unitaire (CAD)");
+            Map(f => f.CouleurDominante).Name("Couleur");
+            Map(f => f.Description).Name("Caractéristiques");
+        }
+    }
+
+}

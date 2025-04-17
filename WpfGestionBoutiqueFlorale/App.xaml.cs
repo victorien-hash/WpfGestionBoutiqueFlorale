@@ -14,7 +14,7 @@ public partial class App : Application
     {
         base.OnStartup(e);
 
-        string cheminFichier = @"C:\\Users\\victorien\\Desktop\\WpfGestionBoutiqueFlorale\\WpfGestionBoutiqueFlorale\\bin\\Debug\\net8.0-windows\\fleurs_db.csv"; //  adapte le chemin selon ton projet
+        string cheminFichier = "fleurs_db.csv"; // Chemin vers le fichier CSV
         FleurImportation.ImporterEtEnregistrerFleurs(cheminFichier);
     }
 }
