@@ -20,7 +20,8 @@ namespace WpfGestionBoutiqueFlorale.Views
         public ClientView()
         {
             InitializeComponent();
-            
+            DataContext = new ClientViewModel();
+
         }
 
 

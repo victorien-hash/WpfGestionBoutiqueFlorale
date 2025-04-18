@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,8 +21,12 @@ namespace WpfGestionBoutiqueFlorale.Models
 
         public ICollection<Fleur> Fleurs { get; set; }
 
-        public int IdCommande { get; set; }
-        public Commande Commande { get; set; }
+        public int? IdCommande { get; set; }
+        public Commande? Commande { get; set; }
+
+        [NotMapped]
+        public bool EstSelectionne { get; set; }
+
 
     }
 

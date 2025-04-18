@@ -7,34 +7,111 @@
         mc:Ignorable="d"
         Title="ClientView" Height="450" Width="800">
     <Grid>
-        <TabControl Margin="10" Background="#FFF5F5F5">
-            <TabControl.Resources>
-                <Style TargetType="{x:Type TabItem}">
-                    <Setter Property="Padding" Value="15 8"/>
-                    <Setter Property="FontSize" Value="14"/>
-                    <Setter Property="FontWeight" Value="SemiBold"/>
-                    <Setter Property="Background" Value="#FFEEEEEE"/>
-                    <Setter Property="BorderBrush" Value="#FFDDDDDD"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="White"/>
-                            <Setter Property="BorderThickness" Value="1 1 1 0"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TabControl.Resources>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <TabControl Margin="10" Background="#FFF5F5F5">
+                <TabControl.Resources>
+                    <Style TargetType="{x:Type TabItem}">
+                        <Setter Property="Padding" Value="15 8"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="FontWeight" Value="SemiBold"/>
+                        <Setter Property="Background" Value="#FFEEEEEE"/>
+                        <Setter Property="BorderBrush" Value="#FFDDDDDD"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="White"/>
+                                <Setter Property="BorderThickness" Value="1 1 1 0"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TabControl.Resources>
 
-            <TabItem Header="Passer une commande">
-                <!-- Contenu vide pour l'instant -->
-                <Grid/>
-            </TabItem>
+                <TabItem Header="Passer une commande">
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-            <TabItem Header="Creer un bouquet">
-                <!-- Contenu vide pour l'instant -->
-                <Grid/>
-            </TabItem>
+                        <StackPanel Orientation="Vertical" Margin="10">
+                            <!-- Fleurs -->
+                            <TextBlock Text="Sélectionnez les fleurs :" FontWeight="Bold" Margin="0,0,0,5"/>
+                            <ListBox x:Name="FleursListBox"
+                     ItemsSource="{Binding FleursDisponibles}"
+                     SelectionMode="Multiple"
+                     DisplayMemberPath="Nom"
+                     Height="100"/>
 
-        </TabControl>
+                            <!-- Bouquets -->
+                            <TextBlock Text="Sélectionnez les bouquets :" FontWeight="Bold" Margin="10,10,0,5"/>
+                            <ListBox x:Name="BouquetsListBox"
+                     ItemsSource="{Binding BouquetsDisponibles}"
+                     SelectionMode="Multiple"
+                     DisplayMemberPath="Nom"
+                     Height="100"/>
 
+                            <!-- Vendeur -->
+                            <TextBlock Text="Sélectionnez un vendeur :" FontWeight="Bold" Margin="10,10,0,5"/>
+                            <ComboBox x:Name="VendeurComboBox"
+                      ItemsSource="{Binding VendeursDisponibles}"
+                      SelectedItem="{Binding VendeurSelectionne}"
+                      DisplayMemberPath="username"
+                      Height="30"/>
+                        </StackPanel>
+
+                        <!-- Bouton Commander -->
+                        <Button Grid.Row="1"
+                Content="Passer la commande"
+                Width="200"
+                Height="40"
+                Margin="10"
+                HorizontalAlignment="Right"
+                Command="{Binding CommanderFleursCommand}"/>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Creer un bouquet">
+                    <Grid Margin="10">
+
+                        <!-- Fleurs -->
+                        <StackPanel Orientation="Vertical" Margin="10">
+                            <TextBlock Text="Sélectionnez les fleurs :" FontWeight="Bold" Margin="0,0,0,5"/>
+                            <ListBox x:Name="FleursListBox2"
+                        ItemsSource="{Binding FleursDisponibles}"
+                        SelectionMode="Multiple"
+                        DisplayMemberPath="Nom"
+                        Height="100"/>
+
+
+                            <Label Content="NomBouquet*"
+                            FontWeight="SemiBold"
+                            Padding="0,0,0,2"/>
+                            <TextBox Text="{Binding NomBouquet, UpdateSourceTrigger=PropertyChanged}"
+                            Padding="8"
+                            Height="35"/>
+                            
+                            
+                            <Label Content="CartePersonalise*"
+                            FontWeight="SemiBold"
+                            Padding="0,0,0,2"/>
+                            <TextBox Text="{Binding CartePersonalise, UpdateSourceTrigger=PropertyChanged}"
+                            Padding="8"
+                            Height="35"/>
+
+                            <!-- Bouton Creer Bouquet -->
+                            <Button Grid.Row="1"
+                        Content="Creer le Bouquet"
+                        Width="200"
+                        Height="40"
+                        Margin="10"
+                        HorizontalAlignment="Right"
+                        Command="{Binding CreerBouquet}"/>
+                        </StackPanel>
+
+
+                    </Grid>
+                </TabItem>
+
+            </TabControl>
+        </ScrollViewer>
     </Grid>
 </Window>

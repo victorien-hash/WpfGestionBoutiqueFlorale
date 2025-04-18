@@ -33,7 +33,7 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IdCommande")
+                    b.Property<int?>("IdCommande")
                         .HasColumnType("int");
 
                     b.Property<string>("NomBouquet")
@@ -186,8 +186,7 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                     b.HasOne("WpfGestionBoutiqueFlorale.Models.Commande", "Commande")
                         .WithMany("Bouquets")
                         .HasForeignKey("IdCommande")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Commande");
                 });

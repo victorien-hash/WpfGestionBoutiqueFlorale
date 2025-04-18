@@ -11,8 +11,8 @@ using WpfGestionBoutiqueFlorale;
 namespace WpfGestionBoutiqueFlorale.Migrations
 {
     [DbContext(typeof(GestionFloraleDbContext))]
-    [Migration("20250415211356_GestionFleurDb")]
-    partial class GestionFleurDb
+    [Migration("20250418075236_GestionfleurDb")]
+    partial class GestionfleurDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,7 +36,7 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IdCommande")
+                    b.Property<int?>("IdCommande")
                         .HasColumnType("int");
 
                     b.Property<string>("NomBouquet")
@@ -189,8 +189,7 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                     b.HasOne("WpfGestionBoutiqueFlorale.Models.Commande", "Commande")
                         .WithMany("Bouquets")
                         .HasForeignKey("IdCommande")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Commande");
                 });

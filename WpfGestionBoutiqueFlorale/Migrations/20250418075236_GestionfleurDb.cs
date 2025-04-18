@@ -5,7 +5,7 @@
 namespace WpfGestionBoutiqueFlorale.Migrations
 {
     /// <inheritdoc />
-    public partial class GestionFleurDb : Migration
+    public partial class GestionfleurDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -80,7 +80,7 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NomBouquet = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CartePersonnalise = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IdCommande = table.Column<int>(type: "int", nullable: false)
+                    IdCommande = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
