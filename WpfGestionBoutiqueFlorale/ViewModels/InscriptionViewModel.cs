@@ -6,25 +6,31 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
 using WpfGestionBoutiqueFlorale.Views;
+using WpfGestionBoutiqueFlorale.Models;
 
 namespace WpfGestionBoutiqueFlorale.ViewModels
 {
 
 	public class InscriptionViewModel : ViewModelBase
 	{
-		private string _nom;
-		private string _prenom;
-		private string _adresse;
-		private string _telephone;
-		private string _motDePasse;
-		private string _confirmationMotDePasse;
 
-		public string Nom { get => _nom; set => SetProperty(ref _nom, value); }
-		public string Prenom { get => _prenom; set => SetProperty(ref _prenom, value); }
-		public string Adresse { get => _adresse; set => SetProperty(ref _adresse, value); }
-		public string Telephone { get => _telephone; set => SetProperty(ref _telephone, value); }
-		public string MotDePasse { get => _motDePasse; set => SetProperty(ref _motDePasse, value); }
-		public string ConfirmationMotDePasse { get => _confirmationMotDePasse; set => SetProperty(ref _confirmationMotDePasse, value); }
+		private string _username;
+		private string _firstname;
+		private string _lastname;
+		private string _phone;
+		private string _role;
+		private string _password;
+		private string _confirmationpassword;
+		private string _email;
+
+		public string Username { get => _username; set => SetProperty(ref _username, value); }
+		public string Firstname { get => _firstname; set => SetProperty(ref _firstname, value); }
+		public string Lastname { get => _lastname; set => SetProperty(ref _lastname, value); }
+		public string Phone { get => _phone; set => SetProperty(ref _phone, value); }
+		public string Role { get => _role; set => SetProperty(ref _role, value); }
+		public string Password { get => _password; set => SetProperty(ref _password, value); }
+        public string ConfirmationPassword { get => _confirmationpassword; set => SetProperty(ref _confirmationpassword, value); }
+        public string Email { get => _email; set => SetProperty(ref _email, value); }
 
 		// Commandes
 		public ICommand RegisterCommand { get; }
@@ -36,29 +42,54 @@ namespace WpfGestionBoutiqueFlorale.ViewModels
 			NavigateToLoginCommand = new RelayCommand(ExecuteNavigateToLogin);
 		}
 
-		private void ExecuteRegister(object parameter)
+		public void ExecuteRegister(object parameter)
 		{
 			// Validation des champs obligatoires
-			if (string.IsNullOrWhiteSpace(Nom) ||
-				string.IsNullOrWhiteSpace(Prenom) ||
-				string.IsNullOrWhiteSpace(Adresse))
+			if (string.IsNullOrWhiteSpace(Username) ||
+                string.IsNullOrWhiteSpace(Firstname) ||
+                string.IsNullOrWhiteSpace(Lastname) ||
+                string.IsNullOrWhiteSpace(Phone) ||
+                string.IsNullOrWhiteSpace(Role) ||
+                string.IsNullOrWhiteSpace(Email))
+				
 			{
 				ShowErrorMessage("Tous les champs obligatoires (*) doivent être remplis");
 				return;
 			}
 
 			// Validation des mots de passe
-			if (string.IsNullOrWhiteSpace(MotDePasse))
+			if (string.IsNullOrWhiteSpace(Password))
 			{
 				ShowErrorMessage("Le mot de passe ne peut pas être vide");
 				return;
 			}
 
-			if (MotDePasse != ConfirmationMotDePasse)
+			if (Password != ConfirmationPassword)
 			{
 				ShowErrorMessage("Les mots de passe ne correspondent pas");
 				return;
 			}
+
+			// Création de l'utilisateur
+            using var user = new GestionFloraleDbContext();
+
+            // Ajout de l'utilisateur dans la base de données
+			var utilisateur = new Utilisateur
+            {
+                username = Username,
+                firstname = Firstname,
+                lastname = Lastname,
+                phone = Phone,
+                role = Role,
+                password = Password,
+                email = Email
+            };
+            user.Utilisateurs.Add(utilisateur);
+            user.SaveChanges();
+
+
+
+
 
 			// Simulation d'inscription réussie
 			var result = MessageBox.Show(

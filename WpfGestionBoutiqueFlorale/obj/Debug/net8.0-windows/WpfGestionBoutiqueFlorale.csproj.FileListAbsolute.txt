@@ -422,3 +422,4 @@ C:\Users\victorien\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\o
 C:\Users\victorien\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\obj\Debug\net8.0-windows\Views\ConnexionView.baml
 C:\Users\victorien\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\obj\Debug\net8.0-windows\Views\InscriptionView.baml
 C:\Users\victorien\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\obj\Debug\net8.0-windows\WpfGestionBoutiqueFlorale.sourcelink.json
+C:\Users\victorien\Desktop\WpfGestionBoutiqueFlorale\WpfGestionBoutiqueFlorale\bin\Debug\net8.0-windows\Newtonsoft.Json.dll

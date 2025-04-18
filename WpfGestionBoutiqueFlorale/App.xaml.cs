@@ -16,6 +16,7 @@ public partial class App : Application
 
         string cheminFichier = "fleurs_db.csv"; // Chemin vers le fichier CSV
         FleurImportation.ImporterEtEnregistrerFleurs(cheminFichier);
+        UserImportationApi.BtnImport();
     }
 }
 

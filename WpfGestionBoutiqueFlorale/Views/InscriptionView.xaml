@@ -21,10 +21,10 @@
                 <StackPanel>
                     <!-- Nom -->
                     <StackPanel>
-                        <Label Content="Nom*" 
+                        <Label Content="Username*"
                            FontWeight="SemiBold"
                            Padding="0,0,0,2"/>
-                        <TextBox Text="{Binding Nom, UpdateSourceTrigger=PropertyChanged}"
+                        <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                              Padding="8"
                              Height="35"
                              />
@@ -32,20 +32,20 @@
 
                     <!-- Prénom -->
                     <StackPanel>
-                        <Label Content="Prénom*" 
+                        <Label Content="Firstname*"
                            FontWeight="SemiBold"
                            Padding="0,0,0,2"/>
-                        <TextBox Text="{Binding Prenom, UpdateSourceTrigger=PropertyChanged}"
+                        <TextBox Text="{Binding Firstname, UpdateSourceTrigger=PropertyChanged}"
                              Padding="8"
                              Height="35"/>
                     </StackPanel>
 
                     <!-- Adresse -->
                     <StackPanel>
-                        <Label Content="Adresse*" 
+                        <Label Content="Lastname*"
                            FontWeight="SemiBold"
                            Padding="0,0,0,2"/>
-                        <TextBox Text="{Binding Adresse, UpdateSourceTrigger=PropertyChanged}"
+                        <TextBox Text="{Binding Lastname, UpdateSourceTrigger=PropertyChanged}"
                              Padding="8"
                              Height="35"/>
                     </StackPanel>
@@ -55,25 +55,37 @@
                         <Label Content="Role*" 
                             FontWeight="SemiBold"
                             Padding="0,0,0,2"/>
-                        <TextBox Text="{Binding Adresse, UpdateSourceTrigger=PropertyChanged}"
+                        <TextBox Text="{Binding Role, UpdateSourceTrigger=PropertyChanged}"
                             Padding="8"
                             Height="35"/>
                     </StackPanel>
 
                     <!-- Téléphone -->
                     <StackPanel>
-                        <Label Content="Téléphone*" 
+                        <Label Content="Phone*" 
                            FontWeight="SemiBold"
                            Padding="0,0,0,2"/>
-                        <TextBox Text="{Binding Telephone, UpdateSourceTrigger=PropertyChanged}"
+                        <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"
                              Padding="8"
                              Height="35"
                              InputScope="TelephoneNumber"/>
                     </StackPanel>
 
+
+                    <!-- Email -->
+                    <StackPanel>
+                        <Label Content="Email*"
+                        FontWeight="SemiBold"
+                        Padding="0,0,0,2"/>
+                        <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"
+                          Padding="8"
+                          Height="35"/>
+                    </StackPanel>
+
+
                     <!-- Mot de passe -->
                     <StackPanel>
-                        <Label Content="Mot de passe*" 
+                        <Label Content="Password*"
                            FontWeight="SemiBold"
                            Padding="0,0,0,2"/>
                         <PasswordBox x:Name="MotPasswordBox" PasswordChanged="PasswordBox_PasswordChanged"
@@ -83,7 +95,7 @@
 
                     <!-- Confirmation mot de passe -->
                     <StackPanel Margin="0,0,0,20">
-                        <Label Content="Confirmation mot de passe*"
+                        <Label Content="ConfirmationPassword*"
                            FontWeight="SemiBold"
                            Padding="0,0,0,2"/>
                         <PasswordBox x:Name="ConfirmationPasswordBox" PasswordChanged="ConfirmPasswordBox_PasswordChanged"
@@ -110,13 +122,13 @@
                     </Button>
                 </StackPanel>
 
-                <!-- Lien vers connexion -->
+                <!-- Lien vers connexion --><!--
                 <TextBlock Margin="0,15,0,0" HorizontalAlignment="Center">
                 <Hyperlink Command="{Binding NavigateToLoginCommand}" 
                           Foreground="#FF2E8B57">
                     Déjà un compte ? Se connecter
                 </Hyperlink>
-                </TextBlock>
+                </TextBlock>-->
             </StackPanel>
         </ScrollViewer>
     </Grid>

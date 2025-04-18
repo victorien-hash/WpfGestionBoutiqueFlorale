@@ -30,6 +30,8 @@
                          Height="35"
                          />
                     </StackPanel>
+                    
+                    
 
                     
 
@@ -46,7 +48,20 @@
                             Height="35"/>
                     </StackPanel>
 
-                    
+                    <StackPanel>
+                        <!-- Nom -->
+                        <StackPanel>
+                            <Label Content="Role"
+                               FontWeight="SemiBold"
+                               Padding="0,0,0,2"/>
+                            <TextBox Text="{Binding Role, UpdateSourceTrigger=PropertyChanged}"
+                                 Padding="8"
+                                 Height="35"/>
+                                 
+                        </StackPanel>
+                    </StackPanel>
+
+
 
                     <!-- Bouton Valider -->
                     <Button Content="Se connecter"
@@ -68,12 +83,12 @@
                 </StackPanel>
 
                 <!-- Lien vers connexion -->
-                <TextBlock Margin="0,15,0,0" HorizontalAlignment="Center">
+                <!--<TextBlock Margin="0,15,0,0" HorizontalAlignment="Center">
             <Hyperlink Command="{Binding NavigateToLoginCommand}" 
                       Foreground="#FF2E8B57">
                 Déjà un compte ? Se connecter
             </Hyperlink>
-                </TextBlock>
+                </TextBlock>-->
             </StackPanel>
         </ScrollViewer>
     </Grid>

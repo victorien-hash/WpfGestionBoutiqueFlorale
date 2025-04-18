@@ -30,13 +30,13 @@ namespace WpfGestionBoutiqueFlorale.Views
 		private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
 		{
 			if (DataContext is InscriptionViewModel vm)
-				vm.MotDePasse = MotPasswordBox.Password;
+				vm.Password = MotPasswordBox.Password;
 		}
 
 		private void ConfirmPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
 		{
 			if (DataContext is InscriptionViewModel vm)
-				vm.ConfirmationMotDePasse = ConfirmationPasswordBox.Password;
+				vm.ConfirmationPassword = ConfirmationPasswordBox.Password;
 		}
 	}
 }
