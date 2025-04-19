@@ -35,23 +35,33 @@
                         <StackPanel Orientation="Vertical" Margin="10">
                             <!-- Fleurs -->
                             <TextBlock Text="Sélectionnez les fleurs :" FontWeight="Bold" Margin="0,0,0,5"/>
-                            <ListBox x:Name="FleursListBox"
-                     ItemsSource="{Binding FleursDisponibles}"
-                     SelectionMode="Multiple"
-                     DisplayMemberPath="Nom"
-                     Height="100"/>
+                            <ListBox ItemsSource="{Binding FleursDisponibles}" Height="200">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <CheckBox IsChecked="{Binding EstSelectionnee}" Margin="5"/>
+                                            <TextBlock Text="{Binding Nom}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
 
                             <!-- Bouquets -->
                             <TextBlock Text="Sélectionnez les bouquets :" FontWeight="Bold" Margin="10,10,0,5"/>
-                            <ListBox x:Name="BouquetsListBox"
-                     ItemsSource="{Binding BouquetsDisponibles}"
-                     SelectionMode="Multiple"
-                     DisplayMemberPath="Nom"
-                     Height="100"/>
+                            <ListBox ItemsSource="{Binding BouquetsDisponibles}" Height="200">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <CheckBox IsChecked="{Binding EstSelectionnee}" Margin="5"/>
+                                            <TextBlock Text="{Binding NomBouquet}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
 
                             <!-- Vendeur -->
                             <TextBlock Text="Sélectionnez un vendeur :" FontWeight="Bold" Margin="10,10,0,5"/>
-                            <ComboBox x:Name="VendeurComboBox"
+                            <ComboBox 
                       ItemsSource="{Binding VendeursDisponibles}"
                       SelectedItem="{Binding VendeurSelectionne}"
                       DisplayMemberPath="username"

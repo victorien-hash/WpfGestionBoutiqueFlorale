@@ -5,10 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WpfGestionBoutiqueFlorale.ViewModels;
 
 namespace WpfGestionBoutiqueFlorale.Models
 {
-    public class Bouquet
+    public class Bouquet:ViewModelBase
     {
         public Bouquet() { 
             Fleurs = new List<Fleur>();
@@ -25,7 +26,20 @@ namespace WpfGestionBoutiqueFlorale.Models
         public Commande? Commande { get; set; }
 
         [NotMapped]
-        public bool EstSelectionne { get; set; }
+        public bool _estSelectionnee { get; set; }
+
+        public bool EstSelectionnee
+        {
+            get => _estSelectionnee;
+            set
+            {
+                if (_estSelectionnee != value)
+                {
+                    _estSelectionnee = value;
+                    OnPropertyChanged(nameof(EstSelectionnee));
+                }
+            }
+        }
 
 
     }

@@ -17,8 +17,8 @@ namespace WpfGestionBoutiqueFlorale.Models
         [Key]
         public int IdCommande { get; set; }
 
-        public int IdUtilisateur { get; set; }
-        public Utilisateur Utilisateur { get; set; }
+        public int? IdUtilisateur { get; set; }
+        public Utilisateur? Utilisateur { get; set; }
         
         public double MontantTotal { get; set; }
         public bool EstValidee { get; set; }
@@ -26,8 +26,8 @@ namespace WpfGestionBoutiqueFlorale.Models
         public ICollection<Fleur> Fleurs { get; set; }
         public ICollection<Bouquet> Bouquets { get; set; }
 
-        public int IdFacture { get; set; }
-        public Facture Facture { get; set; }
+        public int? IdFacture { get; set; }
+        public Facture? Facture { get; set; }
        
     }
 }

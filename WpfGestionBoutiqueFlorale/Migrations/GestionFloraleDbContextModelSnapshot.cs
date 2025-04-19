@@ -33,6 +33,9 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("EstSelectionnee")
+                        .HasColumnType("bit");
+
                     b.Property<int?>("IdCommande")
                         .HasColumnType("int");
 
@@ -58,19 +61,19 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                     b.Property<bool>("EstValidee")
                         .HasColumnType("bit");
 
-                    b.Property<int>("FactureIdFacture")
+                    b.Property<int?>("FactureIdFacture")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdFacture")
+                    b.Property<int?>("IdFacture")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdUtilisateur")
+                    b.Property<int?>("IdUtilisateur")
                         .HasColumnType("int");
 
                     b.Property<double>("MontantTotal")
                         .HasColumnType("float");
 
-                    b.Property<int>("UtilisateurIdUtilisateur")
+                    b.Property<int?>("UtilisateurIdUtilisateur")
                         .HasColumnType("int");
 
                     b.HasKey("IdCommande");
@@ -117,6 +120,9 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EstSelectionnee")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("IdBouquet")
                         .HasColumnType("int");
@@ -195,15 +201,11 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                 {
                     b.HasOne("WpfGestionBoutiqueFlorale.Models.Facture", "Facture")
                         .WithMany()
-                        .HasForeignKey("FactureIdFacture")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FactureIdFacture");
 
                     b.HasOne("WpfGestionBoutiqueFlorale.Models.Utilisateur", "Utilisateur")
                         .WithMany()
-                        .HasForeignKey("UtilisateurIdUtilisateur")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UtilisateurIdUtilisateur");
 
                     b.Navigation("Facture");
 

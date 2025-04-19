@@ -5,7 +5,7 @@
 namespace WpfGestionBoutiqueFlorale.Migrations
 {
     /// <inheritdoc />
-    public partial class GestionfleurDb : Migration
+    public partial class GestionDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -48,12 +48,12 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                 {
                     IdCommande = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IdUtilisateur = table.Column<int>(type: "int", nullable: false),
-                    UtilisateurIdUtilisateur = table.Column<int>(type: "int", nullable: false),
+                    IdUtilisateur = table.Column<int>(type: "int", nullable: true),
+                    UtilisateurIdUtilisateur = table.Column<int>(type: "int", nullable: true),
                     MontantTotal = table.Column<double>(type: "float", nullable: false),
                     EstValidee = table.Column<bool>(type: "bit", nullable: false),
-                    IdFacture = table.Column<int>(type: "int", nullable: false),
-                    FactureIdFacture = table.Column<int>(type: "int", nullable: false)
+                    IdFacture = table.Column<int>(type: "int", nullable: true),
+                    FactureIdFacture = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -62,14 +62,12 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                         name: "FK_Commandes_Factures_FactureIdFacture",
                         column: x => x.FactureIdFacture,
                         principalTable: "Factures",
-                        principalColumn: "IdFacture",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "IdFacture");
                     table.ForeignKey(
                         name: "FK_Commandes_Utilisateurs_UtilisateurIdUtilisateur",
                         column: x => x.UtilisateurIdUtilisateur,
                         principalTable: "Utilisateurs",
-                        principalColumn: "IdUtilisateur",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "IdUtilisateur");
                 });
 
             migrationBuilder.CreateTable(
@@ -80,7 +78,8 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NomBouquet = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CartePersonnalise = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IdCommande = table.Column<int>(type: "int", nullable: true)
+                    IdCommande = table.Column<int>(type: "int", nullable: true),
+                    EstSelectionnee = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -105,7 +104,8 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IdBouquet = table.Column<int>(type: "int", nullable: true),
                     BouquetIdBouquet = table.Column<int>(type: "int", nullable: true),
-                    IdCommande = table.Column<int>(type: "int", nullable: true)
+                    IdCommande = table.Column<int>(type: "int", nullable: true),
+                    EstSelectionnee = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

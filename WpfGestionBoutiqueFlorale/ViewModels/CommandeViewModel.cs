@@ -8,5 +8,6 @@ namespace WpfGestionBoutiqueFlorale.ViewModels
 {
     class CommandeViewModel
     {
+        
     }
 }

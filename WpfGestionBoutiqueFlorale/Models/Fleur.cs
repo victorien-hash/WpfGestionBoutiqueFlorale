@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CsvHelper.Configuration.Attributes;
+using WpfGestionBoutiqueFlorale.ViewModels;
 
 namespace WpfGestionBoutiqueFlorale.Models
 {
-    public class Fleur
+    public class Fleur: ViewModelBase
     {
         [Key]
         public int IdFleur { get; set; }
@@ -33,7 +34,20 @@ namespace WpfGestionBoutiqueFlorale.Models
         public Commande? Commande { get; set; }
 
         [NotMapped]
-        public bool EstSelectionnee { get; set; }
-      
+        public bool _estSelectionnee { get; set; }
+
+        public bool EstSelectionnee
+        {
+            get => _estSelectionnee;
+            set
+            {
+                if (_estSelectionnee != value)
+                {
+                    _estSelectionnee = value;
+                    OnPropertyChanged(nameof(EstSelectionnee));
+                }
+            }
+        }
+
     }
 }

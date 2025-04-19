@@ -43,7 +43,14 @@ namespace WpfGestionBoutiqueFlorale.Models
 
         public static void EnregistrerUtilisateurs(List<Utilisateur> users)
         {
+      
+            
+
             using var db = new GestionFloraleDbContext();
+
+            string[] roles = { "vendeur", "client", "proprietaire", "fournisseur" };
+            Random random = new Random();
+            
 
             if (!db.Utilisateurs.Any())
             {
@@ -55,7 +62,7 @@ namespace WpfGestionBoutiqueFlorale.Models
                     lastname = u.lastname,
                     email = u.email,
                     phone = u.phone,
-                    role = u.role,     
+                    role = roles[random.Next(roles.Length)],     
                     password = u.password,    
                 }).ToList();
 
