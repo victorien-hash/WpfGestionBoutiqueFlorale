@@ -40,7 +40,7 @@ namespace WpfGestionBoutiqueFlorale.ViewModels
                 }
                 else
                 {
-                    //stocker les fleurs dans la base de données
+                    //stocker les fleurs selectionnees dans la base de données
                     foreach (var fleur in fleurSelectionnee)
                     {
                         var fleurAjouter = new Fleur()

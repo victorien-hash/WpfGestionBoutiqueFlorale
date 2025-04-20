@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WpfGestionBoutiqueFlorale")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+593c50c5db0d24c88d5e4da6f9f9c1ec67048e00")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+370089528c035df6d9bb7d35befba9e65ea0e3a4")]
 [assembly: System.Reflection.AssemblyProductAttribute("WpfGestionBoutiqueFlorale")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WpfGestionBoutiqueFlorale")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
