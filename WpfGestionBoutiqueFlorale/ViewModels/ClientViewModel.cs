@@ -96,7 +96,7 @@ namespace WpfGestionBoutiqueFlorale.ViewModels
                         IdUtilisateur = VendeurSelectionne.IdUtilisateur,
                         MontantTotal = montantTotalFleurs + montantTotalBouquets,
                         EstValidee = false,
-                        IdFacture = null,
+                        
 
 
 

@@ -25,9 +25,6 @@ namespace WpfGestionBoutiqueFlorale.Models
 
         public ICollection<Fleur> Fleurs { get; set; }
         public ICollection<Bouquet> Bouquets { get; set; }
-
-        public int? IdFacture { get; set; }
-        public Facture? Facture { get; set; }
        
     }
 }

@@ -95,31 +95,31 @@ namespace WpfGestionBoutiqueFlorale.ViewModels
             }
         }
 
-        public void ExecuterGenererFacture() { }
-        //{
-        //    if (CommandeSelectionnee == null || VendeurSelectionnee == null || string.IsNullOrWhiteSpace(MoyenPaiement))
-        //    {
-        //        MessageBox.Show("Veuillez sélectionner une commande, un vendeur et un moyen de paiement.",
-        //                        "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-        //        return;
-        //    }
+        public void ExecuterGenererFacture()
+        {
+            if (CommandeSelectionnee == null || VendeurSelectionnee == null || string.IsNullOrWhiteSpace(MoyenPaiement))
+            {
+                MessageBox.Show("Veuillez sélectionner une commande, un vendeur et un moyen de paiement.",
+                                "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
 
-        //    using (var context = new GestionFloraleDbContext())
-        //    {
-        //        var facture = new Facture
-        //        {
-        //            IdCommande = CommandeSelectionnee.IdCommande,
-        //            IdVendeur = VendeurSelectionnee.IdUtilisateur,
-        //            MoyenPaiement = MoyenPaiement,
-                    
-        //        };
+            using (var db = new GestionFloraleDbContext())
+            {
+                var facture = new Facture
+                {
+                    IdCommande = CommandeSelectionnee.IdCommande,
+                    IdUtilisateur = VendeurSelectionnee.IdUtilisateur,
+                    ModePaiement = MoyenPaiement,
 
-        //        context.Factures.Add(facture);
-        //        context.SaveChanges();
-        //    }
+                };
 
-        //    MessageBox.Show("Facture générée avec succès !", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
-        //}
+                db.Factures.Add(facture);
+                db.SaveChanges();
+            }
+
+            MessageBox.Show("Facture générée avec succès !", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
 
 
     }

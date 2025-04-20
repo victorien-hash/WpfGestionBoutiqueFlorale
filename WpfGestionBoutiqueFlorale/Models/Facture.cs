@@ -13,6 +13,12 @@ namespace WpfGestionBoutiqueFlorale.Models
         public int IdFacture { get; set; }
         public string ModePaiement { get; set; }
 
+        public int? IdCommande { get; set; }
+        public Commande? Commande { get; set; }
+
+        public int? IdUtilisateur { get; set; }
+        public Utilisateur? Utilisateur { get; set; }
+
 
     }
 }

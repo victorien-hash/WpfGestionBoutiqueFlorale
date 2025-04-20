@@ -11,8 +11,8 @@ using WpfGestionBoutiqueFlorale;
 namespace WpfGestionBoutiqueFlorale.Migrations
 {
     [DbContext(typeof(GestionFloraleDbContext))]
-    [Migration("20250419063519_GestionDb")]
-    partial class GestionDb
+    [Migration("20250420033454_GestionFlorale")]
+    partial class GestionFlorale
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,12 +64,6 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                     b.Property<bool>("EstValidee")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("FactureIdFacture")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("IdFacture")
-                        .HasColumnType("int");
-
                     b.Property<int?>("IdUtilisateur")
                         .HasColumnType("int");
 
@@ -80,8 +74,6 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("IdCommande");
-
-                    b.HasIndex("FactureIdFacture");
 
                     b.HasIndex("UtilisateurIdUtilisateur");
 
@@ -96,11 +88,27 @@ namespace WpfGestionBoutiqueFlorale.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdFacture"));
 
+                    b.Property<int?>("CommandeIdCommande")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IdCommande")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IdUtilisateur")
+                        .HasColumnType("int");
+
                     b.Property<string>("ModePaiement")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UtilisateurIdUtilisateur")
+                        .HasColumnType("int");
+
                     b.HasKey("IdFacture");
+
+                    b.HasIndex("CommandeIdCommande");
+
+                    b.HasIndex("UtilisateurIdUtilisateur");
 
                     b.ToTable("Factures");
                 });
@@ -202,15 +210,24 @@ namespace WpfGestionBoutiqueFlorale.Migrations
 
             modelBuilder.Entity("WpfGestionBoutiqueFlorale.Models.Commande", b =>
                 {
-                    b.HasOne("WpfGestionBoutiqueFlorale.Models.Facture", "Facture")
+                    b.HasOne("WpfGestionBoutiqueFlorale.Models.Utilisateur", "Utilisateur")
                         .WithMany()
-                        .HasForeignKey("FactureIdFacture");
+                        .HasForeignKey("UtilisateurIdUtilisateur");
+
+                    b.Navigation("Utilisateur");
+                });
+
+            modelBuilder.Entity("WpfGestionBoutiqueFlorale.Models.Facture", b =>
+                {
+                    b.HasOne("WpfGestionBoutiqueFlorale.Models.Commande", "Commande")
+                        .WithMany()
+                        .HasForeignKey("CommandeIdCommande");
 
                     b.HasOne("WpfGestionBoutiqueFlorale.Models.Utilisateur", "Utilisateur")
                         .WithMany()
                         .HasForeignKey("UtilisateurIdUtilisateur");
 
-                    b.Navigation("Facture");
+                    b.Navigation("Commande");
 
                     b.Navigation("Utilisateur");
                 });

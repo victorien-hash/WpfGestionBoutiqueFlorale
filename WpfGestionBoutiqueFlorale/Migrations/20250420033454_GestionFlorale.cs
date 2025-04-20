@@ -5,24 +5,11 @@
 namespace WpfGestionBoutiqueFlorale.Migrations
 {
     /// <inheritdoc />
-    public partial class GestionDb : Migration
+    public partial class GestionFlorale : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Factures",
-                columns: table => new
-                {
-                    IdFacture = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ModePaiement = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Factures", x => x.IdFacture);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Utilisateurs",
                 columns: table => new
@@ -51,18 +38,11 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                     IdUtilisateur = table.Column<int>(type: "int", nullable: true),
                     UtilisateurIdUtilisateur = table.Column<int>(type: "int", nullable: true),
                     MontantTotal = table.Column<double>(type: "float", nullable: false),
-                    EstValidee = table.Column<bool>(type: "bit", nullable: false),
-                    IdFacture = table.Column<int>(type: "int", nullable: true),
-                    FactureIdFacture = table.Column<int>(type: "int", nullable: true)
+                    EstValidee = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Commandes", x => x.IdCommande);
-                    table.ForeignKey(
-                        name: "FK_Commandes_Factures_FactureIdFacture",
-                        column: x => x.FactureIdFacture,
-                        principalTable: "Factures",
-                        principalColumn: "IdFacture");
                     table.ForeignKey(
                         name: "FK_Commandes_Utilisateurs_UtilisateurIdUtilisateur",
                         column: x => x.UtilisateurIdUtilisateur,
@@ -90,6 +70,33 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                         principalTable: "Commandes",
                         principalColumn: "IdCommande",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Factures",
+                columns: table => new
+                {
+                    IdFacture = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ModePaiement = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IdCommande = table.Column<int>(type: "int", nullable: true),
+                    CommandeIdCommande = table.Column<int>(type: "int", nullable: true),
+                    IdUtilisateur = table.Column<int>(type: "int", nullable: true),
+                    UtilisateurIdUtilisateur = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Factures", x => x.IdFacture);
+                    table.ForeignKey(
+                        name: "FK_Factures_Commandes_CommandeIdCommande",
+                        column: x => x.CommandeIdCommande,
+                        principalTable: "Commandes",
+                        principalColumn: "IdCommande");
+                    table.ForeignKey(
+                        name: "FK_Factures_Utilisateurs_UtilisateurIdUtilisateur",
+                        column: x => x.UtilisateurIdUtilisateur,
+                        principalTable: "Utilisateurs",
+                        principalColumn: "IdUtilisateur");
                 });
 
             migrationBuilder.CreateTable(
@@ -128,13 +135,18 @@ namespace WpfGestionBoutiqueFlorale.Migrations
                 column: "IdCommande");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Commandes_FactureIdFacture",
-                table: "Commandes",
-                column: "FactureIdFacture");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Commandes_UtilisateurIdUtilisateur",
                 table: "Commandes",
+                column: "UtilisateurIdUtilisateur");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Factures_CommandeIdCommande",
+                table: "Factures",
+                column: "CommandeIdCommande");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Factures_UtilisateurIdUtilisateur",
+                table: "Factures",
                 column: "UtilisateurIdUtilisateur");
 
             migrationBuilder.CreateIndex(
@@ -152,6 +164,9 @@ namespace WpfGestionBoutiqueFlorale.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Factures");
+
+            migrationBuilder.DropTable(
                 name: "Fleurs");
 
             migrationBuilder.DropTable(
@@ -159,9 +174,6 @@ namespace WpfGestionBoutiqueFlorale.Migrations
 
             migrationBuilder.DropTable(
                 name: "Commandes");
-
-            migrationBuilder.DropTable(
-                name: "Factures");
 
             migrationBuilder.DropTable(
                 name: "Utilisateurs");
