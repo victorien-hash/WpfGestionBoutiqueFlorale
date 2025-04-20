@@ -62,10 +62,10 @@
                             <!-- Vendeur -->
                             <TextBlock Text="Sélectionnez un vendeur :" FontWeight="Bold" Margin="10,10,0,5"/>
                             <ComboBox 
-                      ItemsSource="{Binding VendeursDisponibles}"
-                      SelectedItem="{Binding VendeurSelectionne}"
-                      DisplayMemberPath="username"
-                      Height="30"/>
+                              ItemsSource="{Binding VendeursDisponibles}"
+                              SelectedItem="{Binding VendeurSelectionne}"
+                              DisplayMemberPath="username"
+                              Height="30"/>
                         </StackPanel>
 
                         <!-- Bouton Commander -->

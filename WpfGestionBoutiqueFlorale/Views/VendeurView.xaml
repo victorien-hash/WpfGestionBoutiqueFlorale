@@ -7,38 +7,138 @@
         mc:Ignorable="d"
         Title="VendeurView" Height="450" Width="800">
     <Grid>
-        <TabControl Margin="10" Background="#FFF5F5F5">
-            <TabControl.Resources>
-                <Style TargetType="{x:Type TabItem}">
-                    <Setter Property="Padding" Value="15 8"/>
-                    <Setter Property="FontSize" Value="14"/>
-                    <Setter Property="FontWeight" Value="SemiBold"/>
-                    <Setter Property="Background" Value="#FFEEEEEE"/>
-                    <Setter Property="BorderBrush" Value="#FFDDDDDD"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Background" Value="White"/>
-                            <Setter Property="BorderThickness" Value="1 1 1 0"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TabControl.Resources>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <TabControl Margin="10">
 
-            <TabItem Header="Valider une commande">
-                <!-- Contenu vide pour l'instant -->
-                <Grid/>
-            </TabItem>
+                <!-- Valider une commande -->
+                <TabItem Header="Valider une commande">
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <!-- Label commande -->
+                            <RowDefinition Height="Auto"/>
+                            <!-- Combo commande -->
+                            <RowDefinition Height="Auto"/>
+                            <!-- Label vendeur -->
+                            <RowDefinition Height="Auto"/>
+                            <!-- Combo vendeur -->
+                            <RowDefinition Height="Auto"/>
+                            <!-- Bouton -->
+                        </Grid.RowDefinitions>
 
-            <TabItem Header="Annuler une commande">
-                <!-- Contenu vide pour l'instant -->
-                <Grid/>
-            </TabItem>
+                        <TextBlock Text="Sélectionnez une commande :" FontWeight="Bold" Margin="0,10,0,5" Grid.Row="0"/>
+                        <ComboBox 
+                        ItemsSource="{Binding CommandeDisponibles}"
+                        SelectedItem="{Binding CommandeSelectionnee}"
+                        DisplayMemberPath="IdCommande"
+                        Height="30" Margin="0,0,0,10"
+                        Grid.Row="1"/>
 
-            <TabItem Header="Générer une facture">
-                <!-- Contenu vide pour l'instant -->
-                <Grid/>
-            </TabItem>
-        </TabControl>
+                        <TextBlock Text="Sélectionnez un vendeur :" FontWeight="Bold" Margin="0,10,0,5" Grid.Row="2"/>
+                        <ComboBox 
+                        ItemsSource="{Binding VendeursDisponibles}"
+                        SelectedItem="{Binding VendeurSelectionnee}"
+                        DisplayMemberPath="username"
+                        Height="30" Margin="0,0,0,10"
+                        Grid.Row="3"/>
 
+                        <Button Content="Valider la commande" 
+                        Width="200"
+                        Height="40"
+                        Margin="0,10,0,0"
+                        HorizontalAlignment="Right"
+                        Command="{Binding ValiderCommande}"
+                        Grid.Row="4"/>
+                    </Grid>
+                </TabItem>
+
+                <!-- Annuler une commande -->
+                <TabItem Header="Annuler une commande">
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Sélectionnez une commande :" FontWeight="Bold" Margin="0,10,0,5" Grid.Row="0"/>
+                        <ComboBox 
+                        ItemsSource="{Binding CommandeDisponibles}"
+                        SelectedItem="{Binding CommandeSelectionnee}"
+                        DisplayMemberPath="IdCommande"
+                        Height="30" Margin="0,0,0,10"
+                        Grid.Row="1"/>
+
+                        <TextBlock Text="Sélectionnez un vendeur :" FontWeight="Bold" Margin="0,10,0,5" Grid.Row="2"/>
+                        <ComboBox 
+                        ItemsSource="{Binding VendeursDisponibles}"
+                        SelectedItem="{Binding VendeurSelectionnee}"
+                        DisplayMemberPath="username"
+                        Height="30" Margin="0,0,0,10"
+                        Grid.Row="3"/>
+
+                        <Button Content="Annuler la commande"
+                        Width="200"
+                        Height="40"
+                        Margin="0,10,0,0"
+                        HorizontalAlignment="Right"
+                        Command="{Binding AnnulerCommande}"
+                        Grid.Row="4"/>
+                    </Grid>
+                </TabItem>
+
+                <!-- Générer une facture -->
+                <TabItem Header="Generer une facture">
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Sélectionnez une commande :" FontWeight="Bold" Margin="0,10,0,5" Grid.Row="0"/>
+                        <ComboBox 
+                        ItemsSource="{Binding CommandeDisponibles}"
+                        SelectedItem="{Binding CommandeSelectionnee}"
+                        DisplayMemberPath="IdCommande"
+                        Height="30" Margin="0,0,0,10"
+                        Grid.Row="1"/>
+
+                        <TextBlock Text="Sélectionnez un vendeur :" FontWeight="Bold" Margin="0,10,0,5" Grid.Row="2"/>
+                        <ComboBox 
+                        ItemsSource="{Binding VendeursDisponibles}"
+                        SelectedItem="{Binding VendeurSelectionnee}"
+                        DisplayMemberPath="username"
+                        Height="30" Margin="0,0,0,10"
+                        Grid.Row="3"/>
+
+                        <TextBlock Text="Méthode de paiement :" FontWeight="Bold" Margin="0,10,0,5" Grid.Row="4"/>
+                        <ComboBox 
+                        SelectedItem="{Binding MoyenPaiement}"
+                        Height="30" Margin="0,0,0,10"
+                        Grid.Row="5">
+                            <ComboBoxItem Content="Espece"/>
+                            <ComboBoxItem Content="Carte de credit"/>
+                            <ComboBoxItem Content="Carte de debit"/>
+                        </ComboBox>
+
+                        <Button Content="Generer la facture"
+                        Width="200"
+                        Height="40"
+                        Margin="0,10,0,0"
+                        HorizontalAlignment="Right"
+                        Command="{Binding GenererFacture}"
+                        Grid.Row="6"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </ScrollViewer>
     </Grid>
+
 </Window>
