@@ -9,7 +9,8 @@
         Title="Boutique Florale - Accueil" 
         Height="450" 
         Width="800"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Icon="/icones/accueil.ico">
 
 
     <Grid Background="#FFFAF8F4">

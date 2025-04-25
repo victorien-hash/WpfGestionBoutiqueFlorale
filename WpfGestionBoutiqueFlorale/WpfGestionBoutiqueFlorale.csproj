@@ -9,6 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="icones\accueil.ico" />
+    <None Remove="icones\client.ico" />
+    <None Remove="icones\commande.ico" />
+    <None Remove="icones\connection.ico" />
+    <None Remove="icones\fournisseur.ico" />
+    <None Remove="icones\icone1.ico" />
+    <None Remove="icones\inscription.ico" />
+    <None Remove="icones\proprietaire.ico" />
+    <None Remove="icones\vendeur.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CsvHelper" Version="33.0.1" />
     <PackageReference Include="MahApps.Metro" Version="2.4.10" />
     <PackageReference Include="MahApps.Metro.IconPacks" Version="5.1.0" />
@@ -32,7 +44,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="icones\" />
+    <Resource Include="icones\accueil.ico" />
+    <Resource Include="icones\client.ico" />
+    <Resource Include="icones\connection.ico" />
+    <Resource Include="icones\fournisseur.ico" />
+    <Resource Include="icones\inscription.ico" />
+    <Resource Include="icones\proprietaire.ico" />
+    <Resource Include="icones\vendeur.ico" />
   </ItemGroup>
 
 </Project>

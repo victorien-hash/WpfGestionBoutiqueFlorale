@@ -28,19 +28,22 @@ namespace WpfGestionBoutiqueFlorale.ViewModels
 
         private void ExecuteConnect(object parameter)
         {
-          
+
             using var db = new GestionFloraleDbContext();
 
             string nomRecherche = username;
 
             bool usernameExiste = db.Utilisateurs.Any(u => u.username == nomRecherche);
 
-            
+
             string nomRecherche2 = password;
 
             bool passwordExiste = db.Utilisateurs.Any(u => u.password == nomRecherche2);
 
-
+            var role_utilisateur = db.Utilisateurs
+                      .Where(u => u.username == username && u.password == password)
+                      .Select(u => u.role)
+                      .FirstOrDefault();
 
 
 
@@ -56,28 +59,30 @@ namespace WpfGestionBoutiqueFlorale.ViewModels
             }
 
             // redirection a la page client
-            if (usernameExiste && passwordExiste && role == "client")
+            if (usernameExiste && passwordExiste && role == "client" && role == role_utilisateur)
+
             {
                 var clientWindow = new ClientView();
                 clientWindow.Show();
                 Application.Current.Windows.OfType<ConnexionView>().FirstOrDefault()?.Close();
             }
             // redirection a la page vendeur
-            else if (usernameExiste && passwordExiste && role == "vendeur")
+            else if (usernameExiste && passwordExiste && role == "vendeur" && role == role_utilisateur)
+
             {
                 var vendeurWindow = new VendeurView();
                 vendeurWindow.Show();
                 Application.Current.Windows.OfType<ConnexionView>().FirstOrDefault()?.Close();
             }
             // redirection a la page fournisseur
-            else if (usernameExiste && passwordExiste && role == "fournisseur")
+            else if (usernameExiste && passwordExiste && role == "fournisseur" && role == role_utilisateur)
             {
                 var fournisseurWindow = new FournisseurView();
                 fournisseurWindow.Show();
                 Application.Current.Windows.OfType<ConnexionView>().FirstOrDefault()?.Close();
             }
             // redirection a la page proprietaire
-            else if (usernameExiste && passwordExiste && role == "proprietaire")
+            else if (usernameExiste && passwordExiste && role == "proprietaire" && role == role_utilisateur)
             {
                 var proprietaireWindow = new ProprietaireView();
                 proprietaireWindow.Show();
@@ -85,8 +90,10 @@ namespace WpfGestionBoutiqueFlorale.ViewModels
             }
             else
             {
-                ShowErrorMessage("Nom d'utilisateur ou mot de passe incorrect");     
+                ShowErrorMessage("Nom d'utilisateur, mot de passe ou role incorrect");
             }
+
+
         }
 
         // Méthode helper pour afficher les erreurs

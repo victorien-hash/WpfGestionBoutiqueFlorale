@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfGestionBoutiqueFlorale.Views"
         mc:Ignorable="d"
-        Title="FournisseurView" Height="450" Width="800">
+        Title="FournisseurView" Height="450" Width="800"
+        Icon="/icones/fournisseur.ico">
     <Grid>
         <TabControl Margin="10" Background="#FFF5F5F5">
             <TabControl.Resources>

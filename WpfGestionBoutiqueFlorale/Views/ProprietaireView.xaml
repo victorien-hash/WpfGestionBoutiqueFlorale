@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:WpfGestionBoutiqueFlorale.Views"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="ProprietaireView" Height="450" Width="800">
-        
-       
-    
+        Title="ProprietaireView" Height="450" Width="800"
+        Icon="/icones/proprietaire.ico">
+
+
+
 
     <DockPanel LastChildFill="True">
         <!-- Contenu principal avec les onglets -->

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfGestionBoutiqueFlorale.Views"
         mc:Ignorable="d"
-        Title="VendeurView" Height="450" Width="800">
+        Title="VendeurView" Height="450" Width="800"
+        Icon="/icones/vendeur.ico">
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <TabControl Margin="10">

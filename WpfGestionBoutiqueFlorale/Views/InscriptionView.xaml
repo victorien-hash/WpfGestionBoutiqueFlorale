@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfGestionBoutiqueFlorale.Views"
         mc:Ignorable="d"
-        Title="InscriptionView" Height="450" Width="800">
+        Title="InscriptionView" Height="450" Width="800"
+        Icon="/icones/inscription.ico">
     <Grid Margin="20">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel Width="350" VerticalAlignment="Center" HorizontalAlignment="Center">
