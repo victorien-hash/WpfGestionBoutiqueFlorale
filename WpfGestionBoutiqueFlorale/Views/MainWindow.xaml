@@ -13,7 +13,12 @@
 
 
     <Grid Background="#FFFAF8F4">
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="603*"/>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="178*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="3" Margin="148,0,0,0" >
             <!-- Titre -->
             <TextBlock Text="Bienvenue dans notre application" FontSize="32" FontWeight="Bold" Foreground="#FF2E8B57" HorizontalAlignment="Center"/>
 
@@ -21,10 +26,10 @@
                 <!-- Bouton Connexion -->
                 <Button Content="Connectez-vous" Width="200" Height="40" Command="{Binding ShowLoginCommand}"/>
 
-                    <!-- Séparateur visuel -->
-                    <TextBlock HorizontalAlignment="Center" Foreground="Gray" FontSize="12"/>
+                <!-- Séparateur visuel -->
+                <TextBlock HorizontalAlignment="Center" Foreground="Gray" FontSize="12"/>
 
-                    <!-- Bouton Inscription -->
+                <!-- Bouton Inscription -->
                 <Button Content="Inscription" Width="200" Height="40"  Command="{Binding ShowRegistrationCommand}"/>
             </StackPanel>
         </StackPanel>

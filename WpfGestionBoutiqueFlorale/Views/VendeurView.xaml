@@ -119,14 +119,16 @@
                         Grid.Row="3"/>
 
                         <TextBlock Text="Méthode de paiement :" FontWeight="Bold" Margin="0,10,0,5" Grid.Row="4"/>
-                        <ComboBox 
-                        SelectedItem="{Binding MoyenPaiement}"
-                        Height="30" Margin="0,0,0,10"
-                        Grid.Row="5">
-                            <ComboBoxItem Content="Espece"/>
-                            <ComboBoxItem Content="Carte de credit"/>
-                            <ComboBoxItem Content="Carte de debit"/>
+                            <ComboBox 
+                                SelectedValue="{Binding MoyenPaiement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                SelectedValuePath="Content"
+                                Height="30" Margin="0,0,0,10"
+                                Grid.Row="5">
+                                <ComboBoxItem Content="Espece"/>
+                                <ComboBoxItem Content="Carte de credit"/>
+                                <ComboBoxItem Content="Carte de debit"/>
                         </ComboBox>
+
 
                         <Button Content="Generer la facture"
                         Width="200"

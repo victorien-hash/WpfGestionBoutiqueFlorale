@@ -250,9 +250,9 @@ namespace WpfGestionBoutiqueFlorale.ViewModels
 
         public void ExecuterGenererFacture()
         {
-            if (CommandeSelectionnee == null || VendeurSelectionnee == null || string.IsNullOrWhiteSpace(MoyenPaiement))
+            if (CommandeSelectionnee == null || string.IsNullOrWhiteSpace(MoyenPaiement))
             {
-                MessageBox.Show("Veuillez sélectionner une commande, un vendeur et un moyen de paiement.",
+                MessageBox.Show("Veuillez sélectionner une commande et un moyen de paiement.",
                                 "Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
@@ -262,7 +262,6 @@ namespace WpfGestionBoutiqueFlorale.ViewModels
                 var facture = new Facture
                 {
                     IdCommande = CommandeSelectionnee.IdCommande,
-                    IdUtilisateur = VendeurSelectionnee.IdUtilisateur,
                     ModePaiement = MoyenPaiement,
 
                 };

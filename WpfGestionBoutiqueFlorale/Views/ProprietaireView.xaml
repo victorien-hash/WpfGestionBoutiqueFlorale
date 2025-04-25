@@ -7,12 +7,13 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         Title="ProprietaireView" Height="450" Width="800">
-
-    <DockPanel>
         
+       
+    
 
-        <!-- Contenu central avec les onglets -->
-        <TabControl>
+    <DockPanel LastChildFill="True">
+        <!-- Contenu principal avec les onglets -->
+        <TabControl DockPanel.Dock="Top">
             <TabControl.Resources>
                 <Style TargetType="{x:Type TabItem}">
                     <Setter Property="Padding" Value="15 10"/>
@@ -29,17 +30,15 @@
                 </Style>
             </TabControl.Resources>
 
-            
-
             <!-- Onglet Fleurs -->
             <TabItem Header="Fleurs">
                 <TabControl>
                     <TabItem Header="Afficher les fleurs">
                         <Grid Margin="10">
-                            <DataGrid ItemsSource="{Binding FleursDisponibles}"
-                                AutoGenerateColumns="False" 
-                                CanUserAddRows="False"
-                                IsReadOnly="True">
+                            <DataGrid ItemsSource="{Binding FleursDisponibles}" 
+                                  AutoGenerateColumns="False" 
+                                  CanUserAddRows="False" 
+                                  IsReadOnly="True">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID" Binding="{Binding IdFleur}" />
                                     <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" />
@@ -58,60 +57,43 @@
                 <TabControl>
                     <TabItem Header="Créer un bouquet personnalisé">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <Grid Margin="10">
-
-                            <!-- Fleurs -->
-                            <StackPanel Orientation="Vertical" Margin="10">
+                            <StackPanel Margin="10">
                                 <TextBlock Text="Sélectionnez les fleurs :" FontWeight="Bold" Margin="0,0,0,5"/>
                                 <ListBox x:Name="FleursListBox2"
-                                    ItemsSource="{Binding FleursDisponibles}"
-                                    SelectionMode="Multiple"
-                                    DisplayMemberPath="Nom"
-                                    Height="100"/>
+                                     ItemsSource="{Binding FleursDisponibles}"
+                                     SelectionMode="Multiple"
+                                     DisplayMemberPath="Nom"
+                                     Height="100"/>
 
+                                <Label Content="Nom du Bouquet*" FontWeight="SemiBold"/>
+                                <TextBox Text="{Binding NomBouquet, UpdateSourceTrigger=PropertyChanged}" Height="35" Padding="8"/>
 
-                                <Label Content="NomBouquet*"
-                                FontWeight="SemiBold"
-                                Padding="0,0,0,2"/>
-                                <TextBox Text="{Binding NomBouquet, UpdateSourceTrigger=PropertyChanged}"
-                                Padding="8"
-                                Height="35"/>
+                                <Label Content="Carte personnalisée*" FontWeight="SemiBold"/>
+                                <TextBox Text="{Binding CartePersonalise, UpdateSourceTrigger=PropertyChanged}" Height="35" Padding="8"/>
 
-
-                                <Label Content="CartePersonalise*"
-                                    FontWeight="SemiBold"
-                                    Padding="0,0,0,2"/>
-                                <TextBox Text="{Binding CartePersonalise, UpdateSourceTrigger=PropertyChanged}"
-                                Padding="8"
-                                Height="35"/>
-
-                                <!-- Bouton Creer Bouquet -->
-                                <Button Grid.Row="1"
-                                    Content="Creer le Bouquet"
+                                <Button Content="Créer le Bouquet"
                                     Width="200"
                                     Height="40"
                                     Margin="10"
                                     HorizontalAlignment="Right"
                                     Command="{Binding CreerBouquet}"/>
                             </StackPanel>
-
-
-                        </Grid>
                         </ScrollViewer>
                     </TabItem>
+
                     <TabItem Header="Afficher les bouquets créés">
                         <Grid Margin="10">
-                                <DataGrid ItemsSource="{Binding BouquetsDisponibles}"
-                                AutoGenerateColumns="False" 
-                                CanUserAddRows="False"
-                                IsReadOnly="True">
+                            <DataGrid ItemsSource="{Binding BouquetsDisponibles}" 
+                                  AutoGenerateColumns="False" 
+                                  CanUserAddRows="False" 
+                                  IsReadOnly="True">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID" Binding="{Binding IdBouquet}" />
                                     <DataGridTextColumn Header="Nom" Binding="{Binding NomBouquet}" />
-                                    <DataGridTextColumn Header="Carte Personalisée" Binding="{Binding CartePersonnalise}" />
+                                    <DataGridTextColumn Header="Carte Personnalisée" Binding="{Binding CartePersonnalise}" />
                                 </DataGrid.Columns>
                             </DataGrid>
-                         </Grid>
+                        </Grid>
                     </TabItem>
                 </TabControl>
             </TabItem>
@@ -120,82 +102,53 @@
             <TabItem Header="Commandes">
                 <TabControl>
                     <TabItem Header="Valider une commande">
-                        <Grid Margin="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <!-- Label commande -->
-                                <RowDefinition Height="Auto"/>
-                                <!-- Combo commande -->
-                                <RowDefinition Height="Auto"/>
-                                <!-- Label vendeur -->
-                                <RowDefinition Height="Auto"/>
-                                <!-- Combo vendeur -->
-                                <RowDefinition Height="Auto"/>
-                                <!-- Bouton -->
-                            </Grid.RowDefinitions>
-
-                            <TextBlock Text="Sélectionnez une commande :" FontWeight="Bold" Margin="0,10,0,5" Grid.Row="0"/>
-                            
-                            <DataGrid ItemsSource="{Binding CommandeDisponibles}"
-                                AutoGenerateColumns="False" 
-                                SelectedItem="{Binding CommandeSelectionnee}"
-                                CanUserAddRows="False"
-                                IsReadOnly="True">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="Sélectionnez une commande :" FontWeight="Bold" Margin="0,10,0,5"/>
+                            <DataGrid ItemsSource="{Binding CommandeDisponibles}" 
+                                  AutoGenerateColumns="False"
+                                  SelectedItem="{Binding CommandeSelectionnee}"
+                                  CanUserAddRows="False"
+                                  IsReadOnly="True"
+                                  Height="200">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID" Binding="{Binding IdCommande}" />
                                     <DataGridTextColumn Header="Montant Total" Binding="{Binding MontantTotal}" />
-                                    <DataGridTextColumn Header="Satut" Binding="{Binding EstValidee}" />
-
+                                    <DataGridTextColumn Header="Statut" Binding="{Binding EstValidee}" />
                                 </DataGrid.Columns>
                             </DataGrid>
 
                             <Button Content="Valider la commande" 
-                            Width="200"
-                            Height="40"
-                            Margin="0,10,0,0"
-                            HorizontalAlignment="Right"
-                            Command="{Binding ValiderCommande}"
-                            Grid.Row="4"/>
-                        </Grid>
-                    </TabItem>
-                    <TabItem Header="Annuler une commande">
-                        <Grid Margin="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <!-- Label commande -->
-                                <RowDefinition Height="Auto"/>
-                                <!-- Combo commande -->
-                                <RowDefinition Height="Auto"/>
-                                <!-- Label vendeur -->
-                                <RowDefinition Height="Auto"/>
-                                <!-- Combo vendeur -->
-                                <RowDefinition Height="Auto"/>
-                                <!-- Bouton -->
-                            </Grid.RowDefinitions>
-
-                            <TextBlock Text="Sélectionnez une commande :" FontWeight="Bold" Margin="0,10,0,5" Grid.Row="0"/>
-                                 
-                            <DataGrid ItemsSource="{Binding CommandeDisponibles}"
-                                AutoGenerateColumns="False" 
-                                SelectedItem="{Binding CommandeSelectionnee}"
-                                CanUserAddRows="False"
-                                IsReadOnly="True">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="ID" Binding="{Binding IdCommande}" />
-                                    <DataGridTextColumn Header="Montant Total" Binding="{Binding MontantTotal}" />
-                                    <DataGridTextColumn Header="Satut" Binding="{Binding EstValidee}" />
-
-                                </DataGrid.Columns>
-                            </DataGrid>
-
-                            <Button Content="Annuler la commande"
                                 Width="200"
                                 Height="40"
                                 Margin="0,10,0,0"
                                 HorizontalAlignment="Right"
-                                Command="{Binding AnnulerCommande}"
-                                Grid.Row="4"/>
-                        </Grid>
+                                Command="{Binding ValiderCommande}"/>
+                        </StackPanel>
+                    </TabItem>
+
+                    <TabItem Header="Annuler une commande">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="Sélectionnez une commande :" FontWeight="Bold" Margin="0,10,0,5"/>
+                            <DataGrid ItemsSource="{Binding CommandeDisponibles}" 
+                                  AutoGenerateColumns="False"
+                                  SelectedItem="{Binding CommandeSelectionnee}"
+                                  CanUserAddRows="False"
+                                  IsReadOnly="True"
+                                  Height="200">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID" Binding="{Binding IdCommande}" />
+                                    <DataGridTextColumn Header="Montant Total" Binding="{Binding MontantTotal}" />
+                                    <DataGridTextColumn Header="Statut" Binding="{Binding EstValidee}" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <Button Content="Annuler la commande" 
+                                Width="200"
+                                Height="40"
+                                Margin="0,10,0,0"
+                                HorizontalAlignment="Right"
+                                Command="{Binding AnnulerCommande}"/>
+                        </StackPanel>
                     </TabItem>
                 </TabControl>
             </TabItem>
@@ -205,69 +158,57 @@
                 <TabControl>
                     <TabItem Header="Générer une facture">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <Grid Margin="10">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-
-                                <TextBlock Text="Sélectionnez une commande :" FontWeight="Bold" Margin="0,10,0,5" Grid.Row="0"/>
-
-                                <DataGrid ItemsSource="{Binding CommandeDisponibles}"
-                                    AutoGenerateColumns="False" 
-                                    SelectedItem="{Binding CommandeSelectionnee}"
-                                    CanUserAddRows="False"
-                                    IsReadOnly="True">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="Sélectionnez une commande :" FontWeight="Bold" Margin="0,10,0,5"/>
+                                <DataGrid ItemsSource="{Binding CommandeDisponibles}" 
+                                      AutoGenerateColumns="False"
+                                      SelectedItem="{Binding CommandeSelectionnee}"
+                                      CanUserAddRows="False"
+                                      IsReadOnly="True"
+                                      Height="200"
+                                      Margin="0,0,0,10">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="ID" Binding="{Binding IdCommande}" />
                                         <DataGridTextColumn Header="Montant Total" Binding="{Binding MontantTotal}" />
-                                        <DataGridTextColumn Header="Satut" Binding="{Binding EstValidee}" />
-
+                                        <DataGridTextColumn Header="Statut" Binding="{Binding EstValidee}" />
                                     </DataGrid.Columns>
                                 </DataGrid>
 
-                                <TextBlock Text="Méthode de paiement :" FontWeight="Bold" Margin="0,10,0,5" Grid.Row="4"/>
-                                <ComboBox 
-                                    SelectedItem="{Binding MoyenPaiement}"
-                                    Height="30" Margin="0,0,0,10"
-                                    Grid.Row="5">
-                                    <ComboBoxItem Content="Espece"/>
-                                    <ComboBoxItem Content="Carte de credit"/>
-                                    <ComboBoxItem Content="Carte de debit"/>
+                                <TextBlock Text="Méthode de paiement :" FontWeight="Bold" Margin="0,10,0,5"/>
+                                <ComboBox SelectedValue="{Binding MoyenPaiement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                      SelectedValuePath="Content"
+                                      Height="30"
+                                      Margin="0,0,0,10">
+                                    <ComboBoxItem Content="Espèce"/>
+                                    <ComboBoxItem Content="Carte de crédit"/>
+                                    <ComboBoxItem Content="Carte de débit"/>
                                 </ComboBox>
 
-                                <Button Content="Generer la facture"
+                                <Button Content="Générer la facture" 
                                     Width="200"
                                     Height="40"
-                                    Margin="0,10,0,0"
                                     HorizontalAlignment="Right"
-                                    Command="{Binding GenererFacture}"
-                                    Grid.Row="6"/>
-                            </Grid>
+                                    Command="{Binding GenererFacture}"/>
+                            </StackPanel>
                         </ScrollViewer>
                     </TabItem>
+
                     <TabItem Header="Afficher les factures">
-                        <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <Grid Margin="10">
-                            <DataGrid ItemsSource="{Binding FacturesDisponibles}"
-                                 AutoGenerateColumns="False" 
-                                 CanUserAddRows="False"
-                                 IsReadOnly="True">
+                            <DataGrid ItemsSource="{Binding FacturesDisponibles}" 
+                                  AutoGenerateColumns="False" 
+                                  CanUserAddRows="False" 
+                                  IsReadOnly="True">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID" Binding="{Binding IdFacture}" />
                                     <DataGridTextColumn Header="Mode de paiement" Binding="{Binding ModePaiement}" />
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
-                        </ScrollViewer>
                     </TabItem>
                 </TabControl>
             </TabItem>
         </TabControl>
     </DockPanel>
+
 </Window>
