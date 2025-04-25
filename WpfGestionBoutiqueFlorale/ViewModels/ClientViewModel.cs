@@ -17,6 +17,8 @@ namespace WpfGestionBoutiqueFlorale.ViewModels
         public ObservableCollection<Bouquet> BouquetsDisponibles { get; set; }
         public ObservableCollection<Utilisateur> VendeursDisponibles { get; set; }
 
+        public ObservableCollection<Facture> FacturesDisponibles { get; set; }
+
         public Utilisateur VendeurSelectionne { get; set; }
 
         public string CartePersonalise { get; set; }
@@ -27,17 +29,45 @@ namespace WpfGestionBoutiqueFlorale.ViewModels
         public ICommand CommanderFleursCommand { get; set; }
         public ICommand CreerBouquet { get; set; }
 
+
+
+        // proprietes venant du vendeur qui nous servirons pour reutiliser les 
+        // attibut de vendeur pour le proprietaire via clientviewmodel
+
+        public ObservableCollection<Commande> CommandeDisponibles { get; set; }
+        public Commande CommandeSelectionnee { get; set; }
+        public Utilisateur VendeurSelectionnee { get; set; }
+
+        public string MoyenPaiement { get; set; }
+
+        public ICommand ValiderCommande { get; set; }
+        public ICommand AnnulerCommande { get; set; }
+        public ICommand GenererFacture { get; set; }
+
+
+
         public ClientViewModel()
         {
             using var db = new GestionFloraleDbContext();
 
             FleursDisponibles = new ObservableCollection<Fleur>(db.Fleurs.ToList());
+            FacturesDisponibles = new ObservableCollection<Facture>(db.Factures.ToList());
             BouquetsDisponibles = new ObservableCollection<Bouquet>(db.Bouquets.ToList());
             VendeursDisponibles = new ObservableCollection<Utilisateur>(db.Utilisateurs.Where(u => u.role == "vendeur").ToList());
 
 
             CommanderFleursCommand = new RelayCommand(ExecuterCommande);
             CreerBouquet = new RelayCommand(ExecuterCreerBouquet);
+
+
+            // venant du vendeur
+            VendeursDisponibles = new ObservableCollection<Utilisateur>(db.Utilisateurs.Where(u => u.role == "vendeur").ToList());
+            CommandeDisponibles = new ObservableCollection<Commande>(db.Commandes.ToList());
+
+
+            ValiderCommande = new RelayCommand(ExecuterValiderCommande);
+            AnnulerCommande = new RelayCommand(ExecuterAnnulerCommande);
+            GenererFacture = new RelayCommand(ExecuterGenererFacture);
         }
         private void ExecuterCommande()
         {
@@ -160,5 +190,93 @@ namespace WpfGestionBoutiqueFlorale.ViewModels
             }
 
         }
+
+        // methodes venant du vendeur
+
+        public void ExecuterValiderCommande()
+        {
+            if (CommandeSelectionnee != null)
+            {
+                using (var db = new GestionFloraleDbContext())
+                {
+                    var commande = db.Commandes.FirstOrDefault(c => c.IdCommande == CommandeSelectionnee.IdCommande);
+
+                    if (commande != null)
+                    {
+                        commande.EstValidee = true;
+                        db.SaveChanges();
+
+                        // Mettre à jour la liste locale pour refléter le changement (facultatif selon ton affichage)
+                        CommandeSelectionnee.EstValidee = true;
+                    }
+                }
+                MessageBox.Show("Votre commande a bien été validée.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            }
+            else
+            {
+                // Tu peux aussi afficher un message si tu as une gestion d'erreurs ou de notifications
+                MessageBox.Show("Veuillez sélectionner une commande à valider.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        public void ExecuterAnnulerCommande()
+        {
+            if (CommandeSelectionnee != null)
+            {
+                using (var db = new GestionFloraleDbContext())
+                {
+                    var commande = db.Commandes.FirstOrDefault(c => c.IdCommande == CommandeSelectionnee.IdCommande);
+
+                    if (commande != null)
+                    {
+                        commande.EstValidee = false;
+                        db.SaveChanges();
+
+                        // Mise à jour locale
+                        CommandeSelectionnee.EstValidee = false;
+                    }
+
+                }
+
+                MessageBox.Show("Votre commande a bien été annulée.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner une commande à annuler.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        public void ExecuterGenererFacture()
+        {
+            if (CommandeSelectionnee == null || VendeurSelectionnee == null || string.IsNullOrWhiteSpace(MoyenPaiement))
+            {
+                MessageBox.Show("Veuillez sélectionner une commande, un vendeur et un moyen de paiement.",
+                                "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            using (var db = new GestionFloraleDbContext())
+            {
+                var facture = new Facture
+                {
+                    IdCommande = CommandeSelectionnee.IdCommande,
+                    IdUtilisateur = VendeurSelectionnee.IdUtilisateur,
+                    ModePaiement = MoyenPaiement,
+
+                };
+
+                db.Factures.Add(facture);
+                db.SaveChanges();
+            }
+
+            MessageBox.Show("Facture générée avec succès !", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+
+
+
+
     }
 }

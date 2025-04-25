@@ -53,7 +53,7 @@ namespace WpfGestionBoutiqueFlorale.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WpfGestionBoutiqueFlorale;V1.0.0.0;component/views/fournisseurview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WpfGestionBoutiqueFlorale;component/views/fournisseurview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\FournisseurView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -22,14 +22,11 @@ namespace WpfGestionBoutiqueFlorale.Views
     {
         public ProprietaireView()
         {
-            InitializeComponent();
-            DataContext = new ProprietaireViewModel();
-        }
-
-        private void AjouterClientMenu_Click(object sender, RoutedEventArgs e)
-        {
+            InitializeComponent();          
+            DataContext = new ClientViewModel();
            
         }
+
     }
 }
 

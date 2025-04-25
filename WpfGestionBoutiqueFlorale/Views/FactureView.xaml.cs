@@ -23,7 +23,7 @@ namespace WpfGestionBoutiqueFlorale.Views
         public FactureView()
         {
             InitializeComponent();
-            DataContext = new FactureViewModel();
+           
         }
     }
 }

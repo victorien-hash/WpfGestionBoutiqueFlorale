@@ -110,7 +110,7 @@ namespace WpfGestionBoutiqueFlorale.ViewModels
                 {
                     IdCommande = CommandeSelectionnee.IdCommande,
                     IdUtilisateur = VendeurSelectionnee.IdUtilisateur,
-                    ModePaiement = MoyenPaiement,
+                    ModePaiement = MoyenPaiement.ToString(),
 
                 };
 

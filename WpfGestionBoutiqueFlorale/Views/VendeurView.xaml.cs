@@ -24,6 +24,8 @@ namespace WpfGestionBoutiqueFlorale.Views
         {
             InitializeComponent();
             DataContext = new VendeurViewModel();
+                        
+            
         }
     }
 }

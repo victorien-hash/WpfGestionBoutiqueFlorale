@@ -23,7 +23,7 @@ namespace WpfGestionBoutiqueFlorale.Views
         public FleurView()
         {
             InitializeComponent();
-            DataContext = new FleurViewModel();
+           
         }
     }
 }
