@@ -51,7 +51,7 @@
 
                     <StackPanel>
                         <!-- Nom -->
-                        <StackPanel>
+                        <!--<StackPanel>
                             <Label Content="Role"
                                FontWeight="SemiBold"
                                Padding="0,0,0,2"/>
@@ -59,7 +59,7 @@
                                  Padding="8"
                                  Height="35"/>
                                  
-                        </StackPanel>
+                        </StackPanel>-->
                     </StackPanel>
 
 

@@ -59,7 +59,7 @@ namespace WpfGestionBoutiqueFlorale.ViewModels
             }
 
             // redirection a la page client
-            if (usernameExiste && passwordExiste && role == "client" && role == role_utilisateur)
+            if (usernameExiste && passwordExiste && role_utilisateur == "client")
 
             {
                 var clientWindow = new ClientView();
@@ -67,7 +67,7 @@ namespace WpfGestionBoutiqueFlorale.ViewModels
                 Application.Current.Windows.OfType<ConnexionView>().FirstOrDefault()?.Close();
             }
             // redirection a la page vendeur
-            else if (usernameExiste && passwordExiste && role == "vendeur" && role == role_utilisateur)
+            else if (usernameExiste && passwordExiste && role_utilisateur == "vendeur")
 
             {
                 var vendeurWindow = new VendeurView();
@@ -75,14 +75,14 @@ namespace WpfGestionBoutiqueFlorale.ViewModels
                 Application.Current.Windows.OfType<ConnexionView>().FirstOrDefault()?.Close();
             }
             // redirection a la page fournisseur
-            else if (usernameExiste && passwordExiste && role == "fournisseur" && role == role_utilisateur)
+            else if (usernameExiste && passwordExiste && role_utilisateur == "fournisseur")
             {
                 var fournisseurWindow = new FournisseurView();
                 fournisseurWindow.Show();
                 Application.Current.Windows.OfType<ConnexionView>().FirstOrDefault()?.Close();
             }
             // redirection a la page proprietaire
-            else if (usernameExiste && passwordExiste && role == "proprietaire" && role == role_utilisateur)
+            else if (usernameExiste && passwordExiste && role_utilisateur == "proprietaire")
             {
                 var proprietaireWindow = new ProprietaireView();
                 proprietaireWindow.Show();

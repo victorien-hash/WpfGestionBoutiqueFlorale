@@ -53,7 +53,7 @@
 
                     <!-- Role -->
                     <StackPanel>
-                        <Label Content="Role*" 
+                        <Label Content="Role(ex: client, vendeur, fournisseur, proprietaire)*"
                             FontWeight="SemiBold"
                             Padding="0,0,0,2"/>
                         <TextBox Text="{Binding Role, UpdateSourceTrigger=PropertyChanged}"
