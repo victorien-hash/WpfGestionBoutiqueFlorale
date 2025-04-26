@@ -21,7 +21,12 @@
         </Grid.ColumnDefinitions>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="3" Margin="148,0,0,0" >
             <!-- Titre -->
+            <iconPacks:PackIconMaterial HorizontalAlignment="Center" Kind="FleurDeLis" Width="70" Height="70"  Foreground="#FF2E8B57" Margin="0,0,0,20"/>
+
             <TextBlock Text="Bienvenue dans notre application" FontSize="32" FontWeight="Bold" Foreground="#FF2E8B57" HorizontalAlignment="Center"/>
+            <TextBlock Text="de gestion de boutique florale" FontSize="32" FontWeight="Bold" Foreground="#FF2E8B57" HorizontalAlignment="Center"/>
+
+            <TextBlock Text="Par Victorien et Boubacar" FontSize="20" FontStyle="Italic" FontWeight="Bold" Foreground="#FF2E8B57" HorizontalAlignment="Center" Margin="0,0,0,20"/>
 
             <StackPanel HorizontalAlignment="Center">
                 <!-- Bouton Connexion -->
@@ -34,5 +39,6 @@
                 <Button Content="Inscription" Width="200" Height="40"  Command="{Binding ShowRegistrationCommand}"/>
             </StackPanel>
         </StackPanel>
+        
     </Grid>
 </Window>

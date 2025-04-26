@@ -11,7 +11,7 @@ using WpfGestionBoutiqueFlorale;
 namespace WpfGestionBoutiqueFlorale.Migrations
 {
     [DbContext(typeof(GestionFloraleDbContext))]
-    [Migration("20250420033454_GestionFlorale")]
+    [Migration("20250426073059_GestionFlorale")]
     partial class GestionFlorale
     {
         /// <inheritdoc />
