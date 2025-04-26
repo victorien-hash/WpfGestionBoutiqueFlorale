@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfGestionBoutiqueFlorale.Views"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks" xmlns:viewmodels="clr-namespace:WpfGestionBoutiqueFlorale.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:InscriptionViewModel}"
+
         mc:Ignorable="d"
         Title="FournisseurView" Height="450" Width="800"
         Icon="/icones/fournisseur.ico">
@@ -25,8 +27,15 @@
                 </Style>
             </TabControl.Resources>
 
-            <TabItem Header="Reapprovisionnement">
-                <Grid Margin="10">
+            
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial Kind="TruckDelivery" Width="16" Height="16" Margin="0,0,5,0"/>
+                            <TextBlock Text="Reapprovisionnement"/>
+                    </StackPanel>
+                </TabItem.Header>
+                    <Grid Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>

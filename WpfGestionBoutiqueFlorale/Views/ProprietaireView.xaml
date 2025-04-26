@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfGestionBoutiqueFlorale.Views"
-        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks" xmlns:viewmodels="clr-namespace:WpfGestionBoutiqueFlorale.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:InscriptionViewModel}"
+
         mc:Ignorable="d"
         Title="ProprietaireView" Height="450" Width="800"
         Icon="/icones/proprietaire.ico">
@@ -32,10 +33,22 @@
             </TabControl.Resources>
 
             <!-- Onglet Fleurs -->
-            <TabItem Header="Fleurs">
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial Kind="Flower" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Fleurs"/>
+                    </StackPanel>
+                </TabItem.Header>
                 <TabControl>
-                    <TabItem Header="Afficher les fleurs">
-                        <Grid Margin="10">
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <iconPacks:PackIconMaterial Kind="FlowerOutline" Width="16" Height="16" Margin="0,0,5,0"/>
+                                <TextBlock Text="Afficher les fleurs"/>
+                            </StackPanel>
+                                </TabItem.Header>
+                            <Grid Margin="10">
                             <DataGrid ItemsSource="{Binding FleursDisponibles}" 
                                   AutoGenerateColumns="False" 
                                   CanUserAddRows="False" 
@@ -54,9 +67,21 @@
             </TabItem>
 
             <!-- Onglet Bouquets -->
-            <TabItem Header="Bouquets">
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial Kind="SpaOutline" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Bouquets"/>
+                    </StackPanel>
+                </TabItem.Header>
                 <TabControl>
-                    <TabItem Header="Créer un bouquet personnalisé">
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <iconPacks:PackIconMaterial Kind="spa" Width="16" Height="16" Margin="0,0,5,0"/>
+                                <TextBlock Text="Créer un bouquet personnalisé"/>
+                            </StackPanel>
+                        </TabItem.Header>
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <StackPanel Margin="10">
                                 <TextBlock Text="Sélectionnez les fleurs :" FontWeight="Bold" Margin="0,0,0,5"/>
@@ -82,7 +107,13 @@
                         </ScrollViewer>
                     </TabItem>
 
-                    <TabItem Header="Afficher les bouquets créés">
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <iconPacks:PackIconMaterial Kind="FlowerTulip" Width="16" Height="16" Margin="0,0,5,0"/>
+                                <TextBlock Text="Afficher les bouquets crées"/>
+                            </StackPanel>
+                        </TabItem.Header>
                         <Grid Margin="10">
                             <DataGrid ItemsSource="{Binding BouquetsDisponibles}" 
                                   AutoGenerateColumns="False" 
@@ -100,9 +131,21 @@
             </TabItem>
 
             <!-- Onglet Commandes -->
-            <TabItem Header="Commandes">
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial Kind="CartArrowRight" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Commandes"/>
+                    </StackPanel>
+                </TabItem.Header>
                 <TabControl>
-                    <TabItem Header="Valider une commande">
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <iconPacks:PackIconMaterial Kind="CartCheck" Width="16" Height="16" Margin="0,0,5,0"/>
+                                <TextBlock Text="Valider une commande"/>
+                            </StackPanel>
+                        </TabItem.Header>
                         <StackPanel Margin="10">
                             <TextBlock Text="Sélectionnez une commande :" FontWeight="Bold" Margin="0,10,0,5"/>
                             <DataGrid ItemsSource="{Binding CommandeDisponibles}" 
@@ -127,7 +170,13 @@
                         </StackPanel>
                     </TabItem>
 
-                    <TabItem Header="Annuler une commande">
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <iconPacks:PackIconMaterial Kind="CartRemove" Width="16" Height="16" Margin="0,0,5,0"/>
+                                <TextBlock Text="Annuler une commande"/>
+                            </StackPanel>
+                        </TabItem.Header>
                         <StackPanel Margin="10">
                             <TextBlock Text="Sélectionnez une commande :" FontWeight="Bold" Margin="0,10,0,5"/>
                             <DataGrid ItemsSource="{Binding CommandeDisponibles}" 
@@ -155,9 +204,21 @@
             </TabItem>
 
             <!-- Onglet Factures -->
-            <TabItem Header="Factures">
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial Kind="InvoiceMultipleOutline" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Factures"/>
+                    </StackPanel>
+                </TabItem.Header>
                 <TabControl>
-                    <TabItem Header="Générer une facture">
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <iconPacks:PackIconMaterial Kind="InvoiceOutline" Width="16" Height="16" Margin="0,0,5,0"/>
+                                <TextBlock Text="Genérer des factures"/>
+                            </StackPanel>
+                        </TabItem.Header>
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <StackPanel Margin="10">
                                 <TextBlock Text="Sélectionnez une commande :" FontWeight="Bold" Margin="0,10,0,5"/>
@@ -194,7 +255,13 @@
                         </ScrollViewer>
                     </TabItem>
 
-                    <TabItem Header="Afficher les factures">
+                    <TabItem>
+                        <TabItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <iconPacks:PackIconMaterial Kind="InvoiceMultipleOutline" Width="16" Height="16" Margin="0,0,5,0"/>
+                                <TextBlock Text="Afficher les factures"/>
+                            </StackPanel>
+                        </TabItem.Header>
                         <Grid Margin="10">
                             <DataGrid ItemsSource="{Binding FacturesDisponibles}" 
                                   AutoGenerateColumns="False" 

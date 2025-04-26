@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfGestionBoutiqueFlorale.Views"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks" xmlns:viewmodels="clr-namespace:WpfGestionBoutiqueFlorale.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:InscriptionViewModel}"
+
         mc:Ignorable="d"
         Title="VendeurView" Height="450" Width="800"
         Icon="/icones/vendeur.ico">
@@ -12,7 +14,13 @@
             <TabControl Margin="10">
 
                 <!-- Valider une commande -->
-                <TabItem Header="Valider une commande">
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="CartCheck" Width="16" Height="16" Margin="0,0,5,0"/>
+                            <TextBlock Text="Valider une commande"/>
+                        </StackPanel>
+                    </TabItem.Header>
                     <Grid Margin="10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -54,7 +62,13 @@
                 </TabItem>
 
                 <!-- Annuler une commande -->
-                <TabItem Header="Annuler une commande">
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="CartRemove" Width="16" Height="16" Margin="0,0,5,0"/>
+                            <TextBlock Text="Annuler une commande"/>
+                        </StackPanel>
+                    </TabItem.Header>
                     <Grid Margin="10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -91,7 +105,13 @@
                 </TabItem>
 
                 <!-- Générer une facture -->
-                <TabItem Header="Generer une facture">
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="InvoiceMultipleOutline" Width="16" Height="16" Margin="0,0,5,0"/>
+                            <TextBlock Text="Générer une facture"/>
+                        </StackPanel>
+                    </TabItem.Header>
                     <Grid Margin="10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
